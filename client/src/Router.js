@@ -6,10 +6,12 @@ import Nav from "./components/nav/Nav";
 function Router() {
   return (
     <BrowserRouter>
-      <Nav />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-      </Switch>
+      <div className="wrapper">
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

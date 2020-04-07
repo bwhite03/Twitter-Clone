@@ -1,5 +1,49 @@
 #nav-container {
-  text-align: center;
-  display: inline-block;
-  width: 20%;
+  flex-grow: 1;
+  text-align: left;
+  padding-top: 5px;
+  font-size: 1.3em;
+  padding: 0 20px;
+
+  .active-link {
+    color: #00acee;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    padding: 15px 0;
+    color: black;
+    font-weight: bold;
+    &:hover {
+      color: #00acee;
+      span {
+        background: #e8f4f8;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    span {
+      padding: 10px;
+      border-radius: 20px;
+      .fa-twitter {
+        color: #00acee;
+      }
+    }
+  }
+
+  .tweet-button {
+    text-align: center;
+    background: #00acee;
+    border-radius: 20px;
+    margin-top: 15px;
+    padding: 10px 15px;
+
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    &:hover {
+      background: darken(#00acee, 5%);
+    }
+  }
 }
