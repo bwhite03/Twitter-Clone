@@ -1,5 +1,5 @@
 #feed-container {
   text-align: center;
-  display: inline-block;
-  width: 70%;
+  flex-grow: 2;
+  border: 1px solid #d3d3d3;
 }
