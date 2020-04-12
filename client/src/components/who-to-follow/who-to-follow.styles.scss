@@ -1,3 +1,26 @@
 #who-to-follow-container {
-  flex-grow: 1;
+  display: flex;
+  padding: 10px 20px;
+  border-top: 1px solid lightgray;
+
+  .follow-info-container {
+    display: flex;
+
+    .follow-img-container {
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    .follow-user-info-container {
+      align-self: center;
+      padding-left: 10px;
+
+      .at-username {
+        color: gray;
+      }
+    }
+  }
 }

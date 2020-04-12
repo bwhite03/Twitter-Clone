@@ -1,6 +1,6 @@
 import React from "react";
 import Feed from "../../components/feed/Feed";
-import WhoToFollow from "../../components/who-to-follow/WhoToFollow";
+import WhoToFollowList from "../../components/who-to-follow-list/WhoToFollowList";
 import SearchBar from "../../components/util/search-bar/SearchBar";
 import "./homepage.styles.scss";
 
@@ -10,7 +10,7 @@ function HomePage() {
       <Feed />
       <div className="side-info-container">
         <SearchBar />
-        <WhoToFollow />
+        <WhoToFollowList />
       </div>
     </div>
   );
