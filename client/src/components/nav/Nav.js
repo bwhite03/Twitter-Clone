@@ -56,7 +56,7 @@ function Nav() {
           </NavLink>
         </div>
         <div>
-          <NavLink to="/">
+          <NavLink to="/profile">
             <span>
               <i className="fas fa-user-circle"></i> Profile
             </span>
