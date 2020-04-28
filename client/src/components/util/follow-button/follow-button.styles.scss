@@ -1,19 +1,8 @@
 #follow-button {
-  text-align: center;
-  background: white;
-  border-radius: 20px;
-  border: 1px solid #00acee;
-  height: 30px;
-  width: 80px;
-  padding: 5px;
-  color: #00acee;
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-  &:hover {
-    background: darken(#00acee, 5%);
-    color: white;
+  align-self: center;
+
+  .MuiButton-outlined {
+    color: #00acee;
+    border-color: #00acee;
   }
 }

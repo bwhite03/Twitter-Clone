@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import TweetButton from "../util/tweet-button/TweetButton";
 import "./nav.styles.scss";
 
 function Nav() {
@@ -63,7 +64,7 @@ function Nav() {
           </NavLink>
         </div>
         <div className="tweet-button">
-          <span>Tweet</span>
+          <TweetButton size={"large"} />
         </div>
       </nav>
     </div>

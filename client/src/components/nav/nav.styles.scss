@@ -30,19 +30,4 @@
       }
     }
   }
-
-  .tweet-button {
-    text-align: center;
-    background: #00acee;
-    border-radius: 20px;
-    margin-top: 15px;
-    padding: 10px 15px;
-
-    color: white;
-    cursor: pointer;
-    font-size: 20px;
-    &:hover {
-      background: darken(#00acee, 5%);
-    }
-  }
 }

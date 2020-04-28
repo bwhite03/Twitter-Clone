@@ -15,7 +15,9 @@ function ProfileInfo() {
       </div>
       <ProfileDesign />
       <div className="profile-info-bio">
-        <FollowButton />
+        <div className="button">
+          <FollowButton />
+        </div>
         <h1>Blake</h1>
         <p className="atUsername">@Blake</p>
         <p className="bio">

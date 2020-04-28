@@ -1,4 +1,5 @@
 import React from "react";
+import TweetButton from "../util/tweet-button/TweetButton";
 import "./tweet-input.styles.scss";
 
 function TweetInput() {
@@ -14,7 +15,9 @@ function TweetInput() {
         ></img>
         <input type="text" placeholder="What's happening?" />
       </div>
-      <div className="tweet-button">Tweet</div>
+      <div className="tweet-button">
+        <TweetButton size={"small"} />
+      </div>
     </div>
   );
 }
