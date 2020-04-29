@@ -1,73 +1,74 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TweetButton from "../util/tweet-button/TweetButton";
+import { List } from "@material-ui/core";
+import { ListItem } from "@material-ui/core";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
+import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
+import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
+import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import BookmarkBorderOutlinedIcon from "@material-ui/icons/BookmarkBorderOutlined";
+import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+
 import "./nav.styles.scss";
 
 function Nav() {
   return (
-    <div id="nav-container">
-      <nav>
-        <div>
-          <NavLink to="/">
-            <span>
-              <i className="fab fa-twitter"></i>
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/" activeClassName="active-link">
-            <span>
-              <i className="fas fa-home"></i> Home
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/">
-            <span>
-              <i className="fas fa-hashtag"></i> Explore
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/">
-            <span>
-              <i className="far fa-bell"></i> Notifications
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/">
-            <span>
-              <i className="far fa-envelope"></i> Messages
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/">
-            <span>
-              <i className="far fa-bookmark"></i> Bookmarks
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/">
-            <span>
-              <i className="far fa-sticky-note"></i> Lists
-            </span>
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/profile">
-            <span>
-              <i className="fas fa-user-circle"></i> Profile
-            </span>
-          </NavLink>
-        </div>
-        <div className="tweet-button">
-          <TweetButton size={"large"} />
-        </div>
-      </nav>
-    </div>
+    <nav id="nav-container">
+      <List component="nav" aria-label="main mailbox folders">
+        <NavLink to="/" exact activeClassName="active-link">
+          <ListItem button>
+            <ListItemIcon>
+              <HomeOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+        </NavLink>
+        <NavLink to="/">
+          <ListItem button>
+            <ListItemIcon>
+              <ExploreOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Explore" />
+          </ListItem>
+        </NavLink>
+        <NavLink to="/">
+          <ListItem button>
+            <ListItemIcon>
+              <NotificationsNoneOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Notifications" />
+          </ListItem>
+        </NavLink>
+        <NavLink to="/">
+          <ListItem button>
+            <ListItemIcon>
+              <EmailOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Messages" />
+          </ListItem>
+        </NavLink>
+        <NavLink to="/">
+          <ListItem button>
+            <ListItemIcon>
+              <BookmarkBorderOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Bookmarks" />
+          </ListItem>
+        </NavLink>
+        <NavLink to="/profile" exact activeClassName="active-link">
+          <ListItem button>
+            <ListItemIcon>
+              <AccountCircleOutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+        </NavLink>
+      </List>
+      <TweetButton style={{ color: "red" }} />
+    </nav>
   );
 }
 

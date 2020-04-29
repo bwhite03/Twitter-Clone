@@ -12,9 +12,10 @@
     text-align: left;
     display: flex;
     padding: 15px;
-    img {
+
+    .MuiAvatar-root {
       width: 50px;
-      border-radius: 50%;
+      height: 50px;
     }
 
     input {
