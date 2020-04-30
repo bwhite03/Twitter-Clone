@@ -1,26 +1,28 @@
 #who-to-follow-container {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  border-top: 1px solid lightgray;
 
-  .follow-info-container {
-    display: flex;
+  MuiList-root {
+    width: 100%;
+  }
 
-    .follow-img-container {
-      .MuiAvatar-root {
-        width: 50px;
-        height: 50px;
-      }
+  .MuiList-padding {
+    padding: 0;
+  }
+
+  .follow-img-container {
+    .MuiAvatar-root {
+      width: 50px;
+      height: 50px;
     }
+  }
 
-    .follow-user-info-container {
-      align-self: center;
-      padding-left: 10px;
+  .follow-user-info-container {
+    align-self: center;
+    padding-left: 10px;
 
-      .at-username {
-        color: gray;
-      }
+    .at-username {
+      color: gray;
     }
   }
 }

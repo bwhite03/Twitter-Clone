@@ -1,10 +1,16 @@
 import React from "react";
+import TextField from "@material-ui/core/TextField";
 import "./search-bar.styles.scss";
 
 function SearchBar() {
   return (
     <div id="search-bar">
-      <input type="search" placeholder="Search Twitter" />
+      <TextField
+        id="standard-basic"
+        label="Search who to follow"
+        size="small"
+        style={{ width: "100%" }}
+      />
     </div>
   );
 }

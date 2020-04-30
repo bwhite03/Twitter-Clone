@@ -21,7 +21,6 @@ function WhoToFollowList() {
   ]);
   return (
     <div id="who-to-follow-list-container">
-      <h1>Who To Follow</h1>
       {state.map((follow) => (
         <WhoToFollow key={follow.id} follow={follow} />
       ))}

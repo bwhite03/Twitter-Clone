@@ -18,12 +18,13 @@
       height: 50px;
     }
 
-    input {
-      margin-left: 15px;
-      font-size: 20px;
-      border: none;
-      outline: none;
+    .tweet-input-form {
       width: 100%;
+      padding-left: 10px;
+
+      .MuiTextField-root {
+        width: 100%;
+      }
     }
   }
 

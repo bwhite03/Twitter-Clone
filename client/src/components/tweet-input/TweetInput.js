@@ -1,5 +1,6 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 import TweetButton from "../util/tweet-button/TweetButton";
 import "./tweet-input.styles.scss";
 
@@ -15,7 +16,13 @@ function TweetInput() {
           alt="userimg"
           sizes={"lg"}
         />
-        <input type="text" placeholder="What's happening?" />
+        <form className="tweet-input-form">
+          <TextField
+            id="standard-multiline-flexible"
+            label="What's happening?"
+            multiline
+          />
+        </form>
       </div>
       <div className="tweet-button">
         <TweetButton size={"small"} />
