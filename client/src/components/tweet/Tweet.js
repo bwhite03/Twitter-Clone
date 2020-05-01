@@ -1,10 +1,11 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
 import "./tweet.styles.scss";
 
 function Tweet(props) {
   return (
-    <div id="tweet-container">
+    <Card variant="outlined" id="tweet-container">
       <div className="info-container">
         <Avatar src={props.tweet.profileImg} alt="userimg" sizes={"lg"} />
         <p className="username">{props.tweet.username}</p>
@@ -13,7 +14,7 @@ function Tweet(props) {
       <div className="content-container">
         <p>{props.tweet.tweet}</p>
       </div>
-    </div>
+    </Card>
   );
 }
 

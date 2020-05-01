@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WhoToFollow from "../who-to-follow/WhoToFollow";
+import Card from "@material-ui/core/Card";
 import "./who-to-follow-list.styles.scss";
 
 function WhoToFollowList() {
@@ -21,9 +22,11 @@ function WhoToFollowList() {
   ]);
   return (
     <div id="who-to-follow-list-container">
-      {state.map((follow) => (
-        <WhoToFollow key={follow.id} follow={follow} />
-      ))}
+      <Card>
+        {state.map((follow) => (
+          <WhoToFollow key={follow.id} follow={follow} />
+        ))}
+      </Card>
     </div>
   );
 }
