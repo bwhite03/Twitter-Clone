@@ -10,7 +10,10 @@ import "./App.scss";
 function Router() {
   return (
     <BrowserRouter>
-      <Container maxWidth="lg" style={{ display: "flex" }}>
+      <Container
+        maxWidth="lg"
+        style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr" }}
+      >
         <Nav />
         <Switch>
           <Route exact path="/" component={HomePage} />
