@@ -17,7 +17,7 @@
   }
 
   .profile-info-bio {
-    padding-top: 10px;
+    padding: 10px;
     text-align: left;
 
     .button {
@@ -48,6 +48,21 @@
       color: gray;
       span {
         padding-right: 5px;
+      }
+    }
+
+    .followers-container {
+      display: flex;
+      padding-top: 10px;
+      color: gray;
+
+      .followers {
+        padding-left: 5px;
+      }
+
+      span {
+        color: black;
+        font-weight: bold;
       }
     }
   }
