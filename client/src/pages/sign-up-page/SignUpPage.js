@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./sign-up-page.styles.scss";
@@ -20,20 +21,26 @@ function SignUpPage(props) {
     ) {
       console.log("Error inputs empty");
     } else {
-      const user = {
-        email,
-        username,
-        password,
-        confirmPassword,
-      };
-      // axios.post("/post", { user });
+      axios
+        .post("/signup", {
+          email: email,
+          username: username,
+          password: password,
+          confirmPassword: confirmPassword,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       props.history.push("/");
     }
   };
 
   return (
     <div id="sign-up-page-container">
-      <form action="/signup" method="post" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h1>Sign Up to Twitter</h1>
         <TextField
           id="outlined-basic"
