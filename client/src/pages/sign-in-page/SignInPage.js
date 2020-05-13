@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import "./sign-in-page.styles.scss";
@@ -13,18 +14,23 @@ function SignInPage(props) {
     if (email === "" || password === "") {
       console.log("Error inputs empty");
     } else {
-      const user = {
-        email,
-        password,
-      };
-      // axios.post("/post", { user });
-      props.history.push("/");
+      axios
+        .post("/signin", {
+          email: email,
+          password: password,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   };
 
   return (
     <div id="sign-in-page-container">
-      <form action="/signin" method="post" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <h1>Sign In to Twitter</h1>
         <TextField
           id="outlined-basic"
