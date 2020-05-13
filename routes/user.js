@@ -4,6 +4,7 @@ const User = require("../models/users.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { registerValidation, signinValidation } = require("../validation");
+const auth = require("./verifyToken");
 
 // get all users
 router.get("/users", (req, res) => {
@@ -27,6 +28,18 @@ router.get("/users/:id", (req, res) => {
   });
 });
 
+// get signedin user
+router.get("/signedin", auth, (req, res) => {
+  User.findOne({ _id: req.user }).exec((err, user) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(user);
+    }
+  });
+});
+
+// sign up
 router.post("/signup", async (req, res) => {
   // validate
   const { error } = registerValidation(req.body);
