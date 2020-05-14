@@ -21,6 +21,7 @@ function SignInPage(props) {
         })
         .then(function (response) {
           console.log(response);
+          localStorage.setItem("auth-token", response.data);
         })
         .catch(function (error) {
           console.log(error);

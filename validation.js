@@ -1,4 +1,3 @@
-// auth
 const Joi = require("@hapi/joi");
 
 // register validation

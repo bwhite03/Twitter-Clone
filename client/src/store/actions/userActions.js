@@ -2,12 +2,18 @@ import axios from "axios";
 export const FETCH_DATA = "FETCH_DATA";
 
 export const fetchData = () => {
-  let data = {};
+  const token = localStorage.getItem("auth-token");
   return (dispatch) => {
-    axios.get("/signedin").then((res) => (data = res));
-    dispatch({
-      type: FETCH_DATA,
-      payload: data,
-    });
+    axios
+      .get("/signedin", { headers: { Authorization: token } })
+      .then((res) => {
+        dispatch({
+          type: FETCH_DATA,
+          payload: res.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 };

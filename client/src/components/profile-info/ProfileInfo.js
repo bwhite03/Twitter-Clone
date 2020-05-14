@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProfileDesign from "../profile-design/ProfileDesign";
 import FollowButton from "../util/follow-button/FollowButton";
 import Card from "@material-ui/core/Card";
+import { connect } from "react-redux";
+import { fetchData } from "../../store/actions/userActions";
 import "./profile-info.styles.scss";
 
-function ProfileInfo() {
+function ProfileInfo(props) {
+  useEffect(() => {
+    props.fetchData();
+  }, []);
+
   return (
     <div id="profile-info-container">
       <Card variant="outlined">
@@ -52,4 +58,10 @@ function ProfileInfo() {
   );
 }
 
-export default ProfileInfo;
+const mapStateToProps = (state) => {
+  return {
+    userInfo: state.userReducer.userInfo,
+  };
+};
+
+export default connect(mapStateToProps, { fetchData })(ProfileInfo);
