@@ -8,17 +8,11 @@ function SignUpPage(props) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      email === "" ||
-      username === "" ||
-      password === "" ||
-      confirmPassword === ""
-    ) {
+    if (email === "" || username === "" || password === "") {
       console.log("Error inputs empty");
     } else {
       axios
@@ -26,7 +20,6 @@ function SignUpPage(props) {
           email: email,
           username: username,
           password: password,
-          confirmPassword: confirmPassword,
         })
         .then(function (response) {
           console.log(response);
@@ -62,13 +55,6 @@ function SignUpPage(props) {
           fullWidth
           margin="normal"
           onChange={(e) => setPassword(e.target.value)}
-        />
-        <TextField
-          id="outlined-basic"
-          label="Confirm Password"
-          fullWidth
-          margin="normal"
-          onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <Button variant="contained" color="primary" size="large" type="submit">
           Sign Up

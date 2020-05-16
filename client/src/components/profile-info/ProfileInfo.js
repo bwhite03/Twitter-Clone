@@ -8,8 +8,11 @@ import { fetchData } from "../../store/actions/userActions";
 import "./profile-info.styles.scss";
 
 function ProfileInfo(props) {
+  const { userInfo } = props;
+
   useEffect(() => {
     props.fetchData();
+    console.log("Update data");
   }, []);
 
   return (
@@ -19,15 +22,15 @@ function ProfileInfo(props) {
           <Link to="/">
             <i className="fas fa-arrow-left"></i>
           </Link>
-          <h1>Blake</h1>
+          <h1>{userInfo.username}</h1>
         </div>
         <ProfileDesign />
         <div className="profile-info-bio">
           <div className="button">
             <FollowButton />
           </div>
-          <h1>Blake</h1>
-          <p className="atUsername">@Blake</p>
+          <h1>{userInfo.username}</h1>
+          <p className="atUsername">@{userInfo.username}</p>
           <p className="bio">
             Educating and inspiring people to create, publish and flourish by
             designing life and business for happiness and fulfillment.

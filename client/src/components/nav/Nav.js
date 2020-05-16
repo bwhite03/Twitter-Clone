@@ -11,10 +11,22 @@ import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneO
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import BookmarkBorderOutlinedIcon from "@material-ui/icons/BookmarkBorderOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
+import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
+import Chip from "@material-ui/core/Chip";
+import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import "./nav.styles.scss";
 
-function Nav() {
+function Nav(props) {
+  const { userInfo } = props;
+  const history = useHistory();
+
+  const logout = () => {
+    localStorage.removeItem("auth-token");
+    history.push("/signin");
+  };
+
   return (
     <nav id="nav-container">
       <List component="nav" aria-label="main mailbox folders">
@@ -68,8 +80,22 @@ function Nav() {
         </NavLink>
       </List>
       <TweetButton style={{ color: "red" }} />
+      {userInfo._id && (
+        <Chip
+          onClick={logout}
+          label="Logout"
+          icon={<ExitToAppOutlinedIcon />}
+          style={{ marginTop: "20px" }}
+        />
+      )}
     </nav>
   );
 }
 
-export default Nav;
+const mapStateToProps = (state) => {
+  return {
+    userInfo: state.userReducer.userInfo,
+  };
+};
+
+export default connect(mapStateToProps)(Nav);
