@@ -5,6 +5,7 @@ import FollowButton from "../util/follow-button/FollowButton";
 import Card from "@material-ui/core/Card";
 import { connect } from "react-redux";
 import { fetchData } from "../../store/actions/userActions";
+import moment from "moment";
 import "./profile-info.styles.scss";
 
 function ProfileInfo(props) {
@@ -40,14 +41,14 @@ function ProfileInfo(props) {
             <span>
               <i className="fas fa-calendar-alt"></i>
             </span>
-            September 2007
+            {moment(userInfo.dateCreated).calendar()}
           </p>
           <div className="followers-container">
             <p className="following">
-              <span>10</span> Following
+              <span>{userInfo.following.length}</span> Following
             </p>
             <p className="followers">
-              <span>100 </span> Followers
+              <span>{userInfo.followers.length}</span> Followers
             </p>
           </div>
         </div>
