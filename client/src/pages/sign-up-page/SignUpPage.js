@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -59,6 +60,10 @@ function SignUpPage(props) {
         <Button variant="contained" color="primary" size="large" type="submit">
           Sign Up
         </Button>
+        <div className="links">
+          <Link to="/">Home</Link>
+          <Link to="/signup">Sign Up</Link>
+        </div>
       </form>
     </div>
   );

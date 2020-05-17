@@ -2,10 +2,20 @@
   form {
     width: 40%;
     margin: 20px auto;
+    text-align: center;
 
     h1 {
       text-align: center;
       color: #00acee;
+    }
+
+    .links {
+      margin-top: 10px;
+      a {
+        text-decoration: none;
+        padding: 5px;
+        color: #00acee;
+      }
     }
   }
 

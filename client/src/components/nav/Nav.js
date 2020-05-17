@@ -29,64 +29,115 @@ function Nav(props) {
 
   return (
     <nav id="nav-container">
-      <List component="nav" aria-label="main mailbox folders">
-        <NavLink to="/" exact activeClassName="active-link">
-          <ListItem button>
-            <ListItemIcon>
-              <HomeOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-        </NavLink>
-        <NavLink to="/">
-          <ListItem button>
-            <ListItemIcon>
-              <ExploreOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Explore" />
-          </ListItem>
-        </NavLink>
-        <NavLink to="/">
-          <ListItem button>
-            <ListItemIcon>
-              <NotificationsNoneOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Notifications" />
-          </ListItem>
-        </NavLink>
-        <NavLink to="/">
-          <ListItem button>
-            <ListItemIcon>
-              <EmailOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Messages" />
-          </ListItem>
-        </NavLink>
-        <NavLink to="/">
-          <ListItem button>
-            <ListItemIcon>
-              <BookmarkBorderOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Bookmarks" />
-          </ListItem>
-        </NavLink>
-        <NavLink to="/profile" exact activeClassName="active-link">
-          <ListItem button>
-            <ListItemIcon>
-              <AccountCircleOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary="Profile" />
-          </ListItem>
-        </NavLink>
-      </List>
-      <TweetButton style={{ color: "red" }} />
-      {userInfo._id && (
-        <Chip
-          onClick={logout}
-          label="Logout"
-          icon={<ExitToAppOutlinedIcon />}
-          style={{ marginTop: "20px" }}
-        />
+      {userInfo._id ? (
+        <List>
+          <NavLink to="/" exact activeClassName="active-link">
+            <ListItem button>
+              <ListItemIcon>
+                <HomeOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/">
+            <ListItem button>
+              <ListItemIcon>
+                <ExploreOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Explore" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/">
+            <ListItem button>
+              <ListItemIcon>
+                <NotificationsNoneOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Notifications" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/">
+            <ListItem button>
+              <ListItemIcon>
+                <EmailOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Messages" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/">
+            <ListItem button>
+              <ListItemIcon>
+                <BookmarkBorderOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Bookmarks" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/profile" exact activeClassName="active-link">
+            <ListItem button>
+              <ListItemIcon>
+                <AccountCircleOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+          </NavLink>
+          <TweetButton style={{ color: "red" }} />
+          <Chip
+            onClick={logout}
+            label="Logout"
+            icon={<ExitToAppOutlinedIcon />}
+            style={{ marginTop: "20px" }}
+          />
+        </List>
+      ) : (
+        <List>
+          <NavLink to="/" exact activeClassName="active-link">
+            <ListItem button>
+              <ListItemIcon>
+                <HomeOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/signin">
+            <ListItem button>
+              <ListItemIcon>
+                <ExploreOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Explore" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/signin">
+            <ListItem button>
+              <ListItemIcon>
+                <NotificationsNoneOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Notifications" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/signin">
+            <ListItem button>
+              <ListItemIcon>
+                <EmailOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Messages" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/signin">
+            <ListItem button>
+              <ListItemIcon>
+                <BookmarkBorderOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Bookmarks" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/signin" exact activeClassName="active-link">
+            <ListItem button>
+              <ListItemIcon>
+                <AccountCircleOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Profile" />
+            </ListItem>
+          </NavLink>
+        </List>
       )}
     </nav>
   );

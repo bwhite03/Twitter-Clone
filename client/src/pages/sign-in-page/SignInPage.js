@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -7,6 +8,7 @@ import "./sign-in-page.styles.scss";
 function SignInPage(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +24,7 @@ function SignInPage(props) {
         .then(function (response) {
           console.log(response);
           localStorage.setItem("auth-token", response.data);
+          history.push("/");
         })
         .catch(function (error) {
           console.log(error);
@@ -50,6 +53,10 @@ function SignInPage(props) {
         <Button variant="contained" color="primary" size="large" type="submit">
           Sign Up
         </Button>
+        <div className="links">
+          <Link to="/">Home</Link>
+          <Link to="/signup">Sign Up</Link>
+        </div>
       </form>
     </div>
   );

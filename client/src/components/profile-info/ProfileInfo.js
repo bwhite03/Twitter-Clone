@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import ProfileDesign from "../profile-design/ProfileDesign";
 import FollowButton from "../util/follow-button/FollowButton";
@@ -9,11 +9,6 @@ import "./profile-info.styles.scss";
 
 function ProfileInfo(props) {
   const { userInfo } = props;
-
-  useEffect(() => {
-    props.fetchData();
-    console.log("Update data");
-  }, []);
 
   return (
     <div id="profile-info-container">
