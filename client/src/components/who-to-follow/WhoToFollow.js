@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import FollowButton from "../util/follow-button/FollowButton";
 import List from "@material-ui/core/List";
@@ -11,13 +12,19 @@ function WhoToFollow(props) {
     <div id="who-to-follow-container">
       <List component="nav" style={{ width: "100%" }}>
         <ListItem button style={{ justifyContent: "space-between" }}>
-          <div style={{ display: "flex" }}>
-            <Avatar src={props.follow.profileImg} alt="userimg" sizes={"lg"} />
-            <div className="follow-user-info-container">
-              <p>{props.follow.username}</p>
-              <p className="at-username">{props.follow.usernameAt}</p>
+          <Link to={props.follow._id}>
+            <div style={{ display: "flex" }}>
+              <Avatar
+                src={props.follow.profileImg}
+                alt="userimg"
+                sizes={"lg"}
+              />
+              <div className="follow-user-info-container">
+                <p>{props.follow.username}</p>
+                <p className="at-username">{props.follow.usernameAt}</p>
+              </div>
             </div>
-          </div>
+          </Link>
           <FollowButton />
         </ListItem>
         <Divider />

@@ -15,7 +15,6 @@ import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Chip from "@material-ui/core/Chip";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-
 import "./nav.styles.scss";
 
 function Nav(props) {

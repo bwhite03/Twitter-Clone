@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Container } from "@material-ui/core";
 import HomePage from "./pages/homepage/HomePage";
 import ProfilePage from "./pages/profilepage/ProfilePage";
+import ProfilePages from "./pages/profilepages/ProfilePages";
 import SignUpPage from "./pages/sign-up-page/SignUpPage";
 import SignInPage from "./pages/sign-in-page/SignInPage";
 import { Provider } from "react-redux";
@@ -17,6 +18,7 @@ function Router() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/profile" component={ProfilePage} />
+            <Route exact path="/:id" component={ProfilePages} />
             <Route exact path="/signup" component={SignUpPage} />
             <Route exact path="/signin" component={SignInPage} />
           </Switch>
