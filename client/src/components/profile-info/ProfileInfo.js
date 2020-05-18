@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProfileDesign from "../profile-design/ProfileDesign";
-import FollowButton from "../util/follow-button/FollowButton";
+import SetupButton from "../util/setup-button/SetupButton";
 import Card from "@material-ui/core/Card";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -22,7 +22,7 @@ function ProfileInfo(props) {
         <ProfileDesign />
         <div className="profile-info-bio">
           <div className="button">
-            <FollowButton />
+            <SetupButton />
           </div>
           <h1>{userInfo.username}</h1>
           <p className="atUsername">@{userInfo.username}</p>
