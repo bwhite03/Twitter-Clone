@@ -1,14 +1,18 @@
 import React from "react";
+import { Avatar } from "@material-ui/core";
 import "./profile-design.styles.scss";
 
-function ProfileDesign() {
+function ProfileDesign(props) {
   return (
     <div id="profile-design-container">
       <div className="profile-info-design">
-        <img
-          src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-          alt="profile"
-        />
+        {props.userInfo.profileImg ? (
+          <Avatar src={props.userInfo.profileImg} alt="userimg" sizes={"lg"} />
+        ) : (
+          <Avatar alt="userimg" sizes={"lg"}>
+            N
+          </Avatar>
+        )}
       </div>
     </div>
   );

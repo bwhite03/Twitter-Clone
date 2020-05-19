@@ -58,6 +58,8 @@ router.post("/signup", async (req, res) => {
     username: req.body.username,
     password: hashPassword,
     dateCreated: req.body.dateCreated,
+    profileImg: req.body.profileImg,
+    profileBackground: req.body.profileBackground,
   });
 
   newUser.save((err, user) => {

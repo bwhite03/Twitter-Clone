@@ -18,9 +18,9 @@ function Router() {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/profile" component={ProfilePage} />
-            <Route exact path="/:id" component={ProfilePages} />
             <Route exact path="/signup" component={SignUpPage} />
             <Route exact path="/signin" component={SignInPage} />
+            <Route exact path="/:id" component={ProfilePages} />
           </Switch>
         </Container>
       </BrowserRouter>

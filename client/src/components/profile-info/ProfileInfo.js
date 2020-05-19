@@ -19,7 +19,7 @@ function ProfileInfo(props) {
           </Link>
           <h1>{userInfo.username}</h1>
         </div>
-        <ProfileDesign />
+        <ProfileDesign userInfo={userInfo} />
         <div className="profile-info-bio">
           <div className="button">
             <SetupButton />
