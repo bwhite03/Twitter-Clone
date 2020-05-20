@@ -10,7 +10,7 @@ function ProfileDesign(props) {
           <Avatar src={props.userInfo.profileImg} alt="userimg" sizes={"lg"} />
         ) : (
           <Avatar alt="userimg" sizes={"lg"}>
-            N
+            {props.userInfo.username.charAt(0).toUpperCase()}
           </Avatar>
         )}
       </div>
