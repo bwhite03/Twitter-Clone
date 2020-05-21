@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import ProfileDesign from "../profile-design/ProfileDesign";
+import ProfileDesigns from "../profile-designs/ProfileDesigns";
 import FollowButton from "../util/follow-button/FollowButton";
 import Card from "@material-ui/core/Card";
 import { connect } from "react-redux";
@@ -22,7 +22,7 @@ function ProfileInfos(props) {
           </Link>
           <h1>{currentUser.username}</h1>
         </div>
-        <ProfileDesign />
+        <ProfileDesigns currentUser={currentUser} />
         <div className="profile-info-bio">
           <div className="button">
             <FollowButton />

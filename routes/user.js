@@ -90,4 +90,15 @@ router.post("/signin", async (req, res) => {
   res.header("Authorization", token).send(token);
 });
 
+// update user following
+router.put("/updatefollowing/:id", (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { following: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+});
+
 module.exports = router;
