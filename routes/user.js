@@ -101,4 +101,15 @@ router.put("/updatefollowing/:id", (req, res) => {
   });
 });
 
+// update user unfollowing
+router.put("/updateunfollowing/:id", (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    { $pull: { following: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+});
+
 module.exports = router;

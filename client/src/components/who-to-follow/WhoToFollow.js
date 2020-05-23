@@ -14,7 +14,20 @@ function WhoToFollow(props) {
   const handleUpdate = () => {
     axios
       .put(`/updatefollowing/${props.userInfo._id}`, {
-        user: props.follow,
+        user: props.follow._id,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const handleDelete = () => {
+    axios
+      .put(`/updateunfollowing/${props.userInfo._id}`, {
+        user: props.follow._id,
       })
       .then(function (response) {
         console.log(response);
@@ -47,9 +60,8 @@ function WhoToFollow(props) {
               </div>
             </div>
           </Link>
-          {}
           {props.userInfo.following.includes(props.follow._id) ? (
-            <UnfollowButton />
+            <UnfollowButton handleDelete={handleDelete} />
           ) : (
             <FollowButton handleUpdate={handleUpdate} />
           )}

@@ -27,8 +27,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  following: [{}],
-  followers: [{}],
+  following: [],
+  followers: [],
 });
 
 module.exports = mongoose.model("User", UserSchema);
