@@ -1,5 +1,6 @@
 import { FETCH_USER } from "../actions/userActions";
 import { FETCH_USERS } from "../actions/userActions";
+import { UPDATE_FOLLOWING } from "../actions/userActions";
 
 const userDefaultState = {
   userInfo: {},
@@ -12,6 +13,11 @@ const userReducer = (state = userDefaultState, action) => {
       return { ...state, userInfo: action.payload };
     case FETCH_USERS:
       return { ...state, users: action.payload };
+    case UPDATE_FOLLOWING:
+      return {
+        ...state,
+        userInfo: { following: [...state.userInfo.following, action.payload] },
+      };
     default:
       return state;
   }

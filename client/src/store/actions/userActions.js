@@ -1,6 +1,7 @@
 import axios from "axios";
 export const FETCH_USER = "FETCH_USER";
 export const FETCH_USERS = "FETCH_USERS";
+export const UPDATE_FOLLOWING = "UPDATE_FOLLOWING";
 
 export const fetchUser = () => {
   const token = localStorage.getItem("auth-token");
@@ -27,6 +28,25 @@ export const fetchUsers = () => {
         dispatch({
           type: FETCH_USERS,
           payload: res.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const updateFollowing = (id) => {
+  console.log(id.followId);
+  return (dispatch) => {
+    axios
+      .put(`/updatefollowing/${id.userId}`, {
+        user: id.followId,
+      })
+      .then(() => {
+        dispatch({
+          type: UPDATE_FOLLOWING,
+          payload: id.followId,
         });
       })
       .catch(function (error) {

@@ -99,6 +99,7 @@ router.put("/updatefollowing/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+  res.end();
 });
 
 // update user unfollowing
@@ -110,6 +111,7 @@ router.put("/updateunfollowing/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+  res.end();
 });
 
 module.exports = router;

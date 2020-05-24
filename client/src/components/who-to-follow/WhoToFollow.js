@@ -7,22 +7,28 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
 import { connect } from "react-redux";
+import { updateFollowing } from "../../store/actions/userActions";
 import axios from "axios";
 import "./who-to-follow.styles.scss";
 
 function WhoToFollow(props) {
-  const handleUpdate = () => {
-    axios
-      .put(`/updatefollowing/${props.userInfo._id}`, {
-        user: props.follow._id,
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  const id = {
+    userId: props.userInfo._id,
+    followId: props.follow._id,
   };
+
+  // const handleUpdate = () => {
+  //   axios
+  //     .put(`/updatefollowing/${props.userInfo._id}`, {
+  //       user: props.follow._id,
+  //     })
+  //     .then(function (response) {
+  //       console.log(response);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     });
+  // };
 
   const handleDelete = () => {
     axios
@@ -63,7 +69,7 @@ function WhoToFollow(props) {
           {props.userInfo.following.includes(props.follow._id) ? (
             <UnfollowButton handleDelete={handleDelete} />
           ) : (
-            <FollowButton handleUpdate={handleUpdate} />
+            <FollowButton handleUpdate={props.updateFollowing.bind(null, id)} />
           )}
         </ListItem>
         <Divider />
@@ -78,4 +84,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(WhoToFollow);
+export default connect(mapStateToProps, { updateFollowing })(WhoToFollow);
