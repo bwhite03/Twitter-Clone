@@ -2,6 +2,7 @@ import axios from "axios";
 export const FETCH_USER = "FETCH_USER";
 export const FETCH_USERS = "FETCH_USERS";
 export const UPDATE_FOLLOWING = "UPDATE_FOLLOWING";
+export const UPDATE_UNFOLLOWING = "UPDATE_UNFOLLOWING";
 
 export const fetchUser = () => {
   const token = localStorage.getItem("auth-token");
@@ -37,7 +38,6 @@ export const fetchUsers = () => {
 };
 
 export const updateFollowing = (id) => {
-  console.log(id.followId);
   return (dispatch) => {
     axios
       .put(`/updatefollowing/${id.userId}`, {
@@ -46,6 +46,24 @@ export const updateFollowing = (id) => {
       .then(() => {
         dispatch({
           type: UPDATE_FOLLOWING,
+          payload: id.followId,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const updateUnfollowing = (id) => {
+  return (dispatch) => {
+    axios
+      .put(`/updateunfollowing/${id.userId}`, {
+        user: id.followId,
+      })
+      .then(() => {
+        dispatch({
+          type: UPDATE_UNFOLLOWING,
           payload: id.followId,
         });
       })
