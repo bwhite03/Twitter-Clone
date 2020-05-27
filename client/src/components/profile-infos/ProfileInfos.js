@@ -2,8 +2,13 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import ProfileDesigns from "../profile-designs/ProfileDesigns";
 import FollowButton from "../util/follow-button/FollowButton";
+import UnfollowButton from "../util/unfollow-button/UnfollowButton";
 import Card from "@material-ui/core/Card";
 import { connect } from "react-redux";
+import {
+  updateFollowing,
+  updateUnfollowing,
+} from "../../store/actions/userActions";
 import moment from "moment";
 import "./profile-infos.styles.scss";
 
@@ -12,6 +17,11 @@ function ProfileInfos(props) {
   let { id } = useParams();
   let currentUser = props.users.filter((user) => user._id === id);
   currentUser = currentUser[0];
+
+  const idd = {
+    userId: props.userInfo._id,
+    followId: currentUser._id,
+  };
 
   return (
     <div id="profile-info-container">
@@ -25,7 +35,15 @@ function ProfileInfos(props) {
         <ProfileDesigns currentUser={currentUser} />
         <div className="profile-info-bio">
           <div className="button">
-            <FollowButton />
+            {props.userInfo.following.includes(currentUser._id) ? (
+              <UnfollowButton
+                handleDelete={props.updateUnfollowing.bind(null, idd)}
+              />
+            ) : (
+              <FollowButton
+                handleUpdate={props.updateFollowing.bind(null, idd)}
+              />
+            )}
           </div>
           <h1>{currentUser.username}</h1>
           <p className="atUsername">@{currentUser.username}</p>
@@ -62,7 +80,10 @@ function ProfileInfos(props) {
 const mapStateToProps = (state) => {
   return {
     users: state.userReducer.users,
+    userInfo: state.userReducer.userInfo,
   };
 };
 
-export default connect(mapStateToProps)(ProfileInfos);
+export default connect(mapStateToProps, { updateFollowing, updateUnfollowing })(
+  ProfileInfos
+);
