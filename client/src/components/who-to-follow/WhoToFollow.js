@@ -11,7 +11,6 @@ import {
   updateFollowing,
   updateUnfollowing,
 } from "../../store/actions/userActions";
-import axios from "axios";
 import "./who-to-follow.styles.scss";
 
 function WhoToFollow(props) {

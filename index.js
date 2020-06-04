@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const UserRoute = require("./routes/user");
+const TweetRoute = require("./routes/tweet");
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.static("client/build"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(UserRoute);
+app.use(TweetRoute);
 
 // Connect database
 mongoose.connect(process.env.DB_CONNECT, {

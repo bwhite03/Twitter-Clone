@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-  email: {
+const TweetSchema = new mongoose.Schema({
+  content: {
     type: String,
     required: true,
   },
   username: {
     type: String,
-    required: true,
   },
-  password: {
+  userid: {
     type: String,
-    required: true,
   },
   dateCreated: {
     type: Date,
@@ -21,12 +19,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  profileBackground: {
-    type: String,
-    default: "",
-  },
-  following: [],
-  followers: [],
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model("Tweet", TweetSchema);
