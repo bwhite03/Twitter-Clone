@@ -21,4 +21,15 @@ router.post("/tweet", (req, res) => {
   });
 });
 
+// get all tweets
+router.get("/tweets", (req, res) => {
+  Tweet.find({}).exec((err, tweets) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(tweets);
+    }
+  });
+});
+
 module.exports = router;

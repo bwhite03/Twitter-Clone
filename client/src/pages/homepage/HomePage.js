@@ -4,6 +4,7 @@ import Nav from "../../components/nav/Nav";
 import SideInfo from "../../components/side-info/SideInfo";
 import { connect } from "react-redux";
 import { fetchUser, fetchUsers } from "../../store/actions/userActions";
+import { fetchTweets } from "../../store/actions/tweetActions";
 import "./homepage.styles.scss";
 
 function HomePage(props) {
@@ -11,6 +12,7 @@ function HomePage(props) {
   useEffect(() => {
     props.fetchUser();
     props.fetchUsers();
+    props.fetchTweets();
   }, []);
 
   return (
@@ -25,4 +27,4 @@ function HomePage(props) {
   );
 }
 
-export default connect(null, { fetchUser, fetchUsers })(HomePage);
+export default connect(null, { fetchUser, fetchUsers, fetchTweets })(HomePage);
