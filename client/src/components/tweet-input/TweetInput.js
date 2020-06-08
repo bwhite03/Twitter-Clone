@@ -10,6 +10,11 @@ import "./tweet-input.styles.scss";
 function TweetInput(props) {
   const [content, setContent] = useState("");
 
+  const submitTweet = () => {
+    props.tweet(data);
+    setContent("");
+  };
+
   const data = {
     content: content,
     username: props.userInfo.username,
@@ -43,14 +48,12 @@ function TweetInput(props) {
               label="What's happening?"
               multiline
               onChange={(e) => setContent(e.target.value)}
+              value={content}
             />
           </form>
         </div>
         <div className="tweet-button">
-          <TweetButton
-            size={"small"}
-            handleTweet={props.tweet.bind(null, data)}
-          />
+          <TweetButton size={"small"} handleTweet={submitTweet} />
         </div>
       </Card>
     </div>
