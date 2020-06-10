@@ -16,7 +16,17 @@ function Router() {
       <BrowserRouter>
         <Container maxWidth="lg">
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route
+              exact
+              path="/"
+              render={() =>
+                localStorage.getItem("auth-token") ? (
+                  <HomePage />
+                ) : (
+                  <SignInPage />
+                )
+              }
+            />
             <Route exact path="/profile" component={ProfilePage} />
             <Route exact path="/signup" component={SignUpPage} />
             <Route exact path="/signin" component={SignInPage} />
