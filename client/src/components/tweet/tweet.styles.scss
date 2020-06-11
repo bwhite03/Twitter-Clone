@@ -1,15 +1,19 @@
 #tweet-container {
-  // border: 1px solid rgb(230, 236, 240);
+  overflow: hidden;
   border-top: 5px solid rgb(230, 236, 240);
   padding: 15px;
 
-  .info-container {
+  .containerr {
     display: flex;
 
     .MuiAvatar-root {
       width: 50px;
       height: 50px;
     }
+  }
+
+  .info-container {
+    display: flex;
 
     p {
       padding-left: 10px;
@@ -24,6 +28,45 @@
 
     .date {
       color: gray;
+    }
+  }
+
+  .icons {
+    display: flex;
+    text-align: left;
+    padding: 10px 0 0 10px;
+
+    .heart-icon {
+      display: flex;
+      margin-left: 15px;
+      cursor: pointer;
+
+      &:hover {
+        color: pink;
+      }
+
+      p {
+        padding-left: 5px;
+        color: black;
+      }
+    }
+
+    .comment-icon {
+      cursor: pointer;
+      display: flex;
+
+      &:hover {
+        color: #00acee;
+      }
+
+      p {
+        padding-left: 5px;
+        color: black;
+      }
+    }
+
+    .MuiSvgIcon-root {
+      font-size: 20px;
     }
   }
 
