@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import TweetButton from "../util/tweet-button/TweetButton";
+import TweetDialog from "../util/tweet-dialog/TweetDialog";
 import { List } from "@material-ui/core";
 import { ListItem } from "@material-ui/core";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -78,7 +78,7 @@ function Nav(props) {
               <ListItemText primary="Profile" />
             </ListItem>
           </NavLink>
-          <TweetButton style={{ color: "red" }} />
+          <TweetDialog style={{ color: "red" }} />
           <Chip
             onClick={logout}
             label="Logout"
