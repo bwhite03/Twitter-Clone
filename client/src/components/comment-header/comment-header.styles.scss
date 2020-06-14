@@ -18,36 +18,88 @@
   }
 
   .container {
-    .comment-container {
-      text-align: left;
+    text-align: left;
+    display: flex;
+    padding: 15px;
+
+    .MuiAvatar-root {
+      width: 50px;
+      height: 50px;
+    }
+
+    .comment-info {
       display: flex;
-      padding: 15px;
-
-      .MuiAvatar-root {
-        width: 50px;
-        height: 50px;
-      }
-
-      p {
-        padding-left: 10px;
-      }
-
-      a {
-        font-weight: bold;
-        text-decoration: none;
-        color: black;
-        cursor: pointer;
-      }
-
-      .date {
-        color: gray;
-      }
     }
 
     .content-container {
-      text-align: left;
-      padding: 10px;
-      display: block;
+      padding: 10px 0;
+    }
+
+    p {
+      padding-left: 10px;
+    }
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+    }
+
+    .date {
+      color: gray;
+    }
+  }
+
+  .likes {
+    padding: 10px 15px;
+    border-top: 1px solid #e6ecf0;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      align-self: center;
+    }
+  }
+
+  .icons {
+    display: flex;
+    text-align: left;
+    padding: 10px 0 10px 10px;
+    border-top: 1px solid rgb(230, 236, 240);
+    border-bottom: 1px solid rgb(230, 236, 240);
+
+    .heart-icon {
+      display: flex;
+      margin-left: 15px;
+      cursor: pointer;
+
+      &:hover {
+        color: pink;
+      }
+
+      p {
+        padding-left: 5px;
+        color: black;
+      }
+    }
+
+    .comment-icon {
+      cursor: pointer;
+      display: flex;
+
+      &:hover {
+        color: #00acee;
+      }
+
+      p {
+        padding-left: 5px;
+        color: black;
+      }
+    }
+
+    .MuiSvgIcon-root {
+      font-size: 20px;
     }
   }
 }

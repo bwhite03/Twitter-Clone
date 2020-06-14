@@ -20,7 +20,7 @@ function Tweet(props) {
             </Avatar>
           )}
         </div>
-        <div>
+        <div style={{ width: "100%" }}>
           <div className="info-container">
             <Link to={props.tweet.userid}>
               <p className="username">{props.tweet.username}</p>
