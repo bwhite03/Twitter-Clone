@@ -5,7 +5,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { tweet } from "../../../store/actions/tweetActions";
+import { comment } from "../../../store/actions/tweetActions";
 import { connect } from "react-redux";
 import "./comment-dialog.styles.scss";
 
@@ -21,14 +21,15 @@ function CommentDialog(props) {
     setOpen(false);
   };
 
-  const submitTweet = () => {
-    props.tweet(data);
+  const submitComment = () => {
+    props.comment(data);
     setContent("");
     setOpen(false);
   };
 
   const data = {
     content: content,
+    id: props.id,
     username: props.userInfo.username,
     profileImg: props.userInfo.profileImg,
     userid: props.userInfo._id,
@@ -63,7 +64,7 @@ function CommentDialog(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={submitTweet}>Tweet</Button>
+          <Button onClick={submitComment}>Comment</Button>
         </DialogActions>
       </Dialog>
     </div>
@@ -73,7 +74,8 @@ function CommentDialog(props) {
 const mapStateToProps = (state) => {
   return {
     userInfo: state.userReducer.userInfo,
+    tweetInfo: state.tweetReducer.tweets,
   };
 };
 
-export default connect(mapStateToProps, { tweet })(CommentDialog);
+export default connect(mapStateToProps, { comment })(CommentDialog);

@@ -32,4 +32,24 @@ router.get("/tweets", (req, res) => {
   });
 });
 
+// add comments to tweet
+router.put("/comment/:id", (req, res) => {
+  const newComment = new Tweet({
+    content: req.body.content,
+    username: req.body.username,
+    profileImg: req.body.profileImg,
+    userid: req.body.userid,
+    dateCreated: req.body.dateCreated,
+  });
+
+  Tweet.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { comments: newComment } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
 module.exports = router;

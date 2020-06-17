@@ -1,6 +1,7 @@
 import axios from "axios";
 export const TWEET = "TWEET";
 export const FETCH_TWEETS = "FETCH_TWEETS";
+export const COMMENT = "COMMENT";
 
 // post tweet
 export const tweet = (data) => {
@@ -33,6 +34,28 @@ export const fetchTweets = () => {
         dispatch({
           type: FETCH_TWEETS,
           payload: res.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+// add comment to tweet
+export const comment = (data) => {
+  return (dispatch) => {
+    axios
+      .put(`/comment/${data.id}`, {
+        content: data.content,
+        username: data.username,
+        profileImg: data.profileImg,
+        userid: data._id,
+      })
+      .then(() => {
+        dispatch({
+          type: COMMENT,
+          payload: data,
         });
       })
       .catch(function (error) {

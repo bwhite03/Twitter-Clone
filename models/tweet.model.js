@@ -19,7 +19,28 @@ const TweetSchema = new mongoose.Schema({
     type: String,
     default: "",
   },
-  comments: [],
+  comments: [
+    {
+      content: {
+        type: String,
+        required: true,
+      },
+      username: {
+        type: String,
+      },
+      userid: {
+        type: String,
+      },
+      dateCreated: {
+        type: Date,
+        default: Date.now,
+      },
+      profileImg: {
+        type: String,
+        default: "",
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Tweet", TweetSchema);
