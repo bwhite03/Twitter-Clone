@@ -51,6 +51,7 @@ export const comment = (data) => {
         username: data.username,
         profileImg: data.profileImg,
         userid: data._id,
+        id: data.id,
       })
       .then(() => {
         dispatch({

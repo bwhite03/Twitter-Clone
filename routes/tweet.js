@@ -40,6 +40,7 @@ router.put("/comment/:id", (req, res) => {
     profileImg: req.body.profileImg,
     userid: req.body.userid,
     dateCreated: req.body.dateCreated,
+    id: req.body.id,
   });
 
   Tweet.findOneAndUpdate(
