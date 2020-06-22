@@ -33,7 +33,8 @@ function Tweet(props) {
           <div className="icons">
             <Link to={`comment/${props.tweet._id}`}>
               <div className="comment-icon">
-                <ChatBubbleOutlineOutlinedIcon /> <p>3</p>
+                <ChatBubbleOutlineOutlinedIcon />{" "}
+                <p>{props.tweet.comments.length}</p>
               </div>
             </Link>
             <div className="heart-icon">

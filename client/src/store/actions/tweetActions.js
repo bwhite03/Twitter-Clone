@@ -50,7 +50,8 @@ export const comment = (data) => {
         content: data.content,
         username: data.username,
         profileImg: data.profileImg,
-        userid: data._id,
+        tweetid: data._id,
+        userid: data.userid,
         id: data.id,
       })
       .then(() => {
