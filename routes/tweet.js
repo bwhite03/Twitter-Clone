@@ -53,4 +53,28 @@ router.put("/comment/:id", (req, res) => {
   res.end();
 });
 
+// update user likes
+router.put("/updatelikes/:id", (req, res) => {
+  Tweet.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { likes: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
+// update user unlikes
+router.put("/updateunlikes/:id", (req, res) => {
+  Tweet.findOneAndUpdate(
+    { _id: req.params.id },
+    { $pull: { likes: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
 module.exports = router;

@@ -20,6 +20,8 @@ function TweetInput(props) {
     username: props.userInfo.username,
     profileImg: props.userInfo.profileImg,
     userid: props.userInfo._id,
+    comments: [],
+    likes: [],
   };
 
   return (

@@ -1,6 +1,8 @@
 import { TWEET } from "../actions/tweetActions";
 import { FETCH_TWEETS } from "../actions/tweetActions";
 import { COMMENT } from "../actions/tweetActions";
+import { UPDATE_LIKES } from "../actions/tweetActions";
+import { UPDATE_UNLIKES } from "../actions/tweetActions";
 
 const userDefaultState = {
   tweets: [],
@@ -18,6 +20,29 @@ const tweetReducer = (state = userDefaultState, action) => {
         tweets: state.tweets.map((tweet) =>
           tweet._id === action.payload.id
             ? { ...tweet, comments: [...tweet.comments, action.payload] }
+            : tweet
+        ),
+      };
+    case UPDATE_LIKES:
+      return {
+        ...state,
+        tweets: state.tweets.map((tweet) =>
+          tweet._id === action.payload.tweetId
+            ? { ...tweet, likes: [...tweet.likes, action.payload.userId] }
+            : tweet
+        ),
+      };
+    case UPDATE_UNLIKES:
+      return {
+        ...state,
+        tweets: state.tweets.map((tweet) =>
+          tweet._id === action.payload.tweetId
+            ? {
+                ...tweet,
+                likes: tweet.likes.filter(
+                  (user) => user !== action.payload.userId
+                ),
+              }
             : tweet
         ),
       };

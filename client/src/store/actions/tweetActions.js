@@ -2,6 +2,8 @@ import axios from "axios";
 export const TWEET = "TWEET";
 export const FETCH_TWEETS = "FETCH_TWEETS";
 export const COMMENT = "COMMENT";
+export const UPDATE_LIKES = "UPDATELIKES";
+export const UPDATE_UNLIKES = "UPDATEUNLIKES";
 
 // post tweet
 export const tweet = (data) => {
@@ -57,6 +59,42 @@ export const comment = (data) => {
       .then(() => {
         dispatch({
           type: COMMENT,
+          payload: data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const updateLikes = (data) => {
+  return (dispatch) => {
+    axios
+      .put(`/updatelikes/${data.tweetId}`, {
+        user: data.userId,
+      })
+      .then(() => {
+        dispatch({
+          type: UPDATE_LIKES,
+          payload: data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const updateUnlikes = (data) => {
+  return (dispatch) => {
+    axios
+      .put(`/updateunlikes/${data.tweetId}`, {
+        user: data.userId,
+      })
+      .then(() => {
+        dispatch({
+          type: UPDATE_UNLIKES,
           payload: data,
         });
       })

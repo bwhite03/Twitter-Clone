@@ -3,11 +3,18 @@ import { Avatar } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { connect } from "react-redux";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
+import { updateLikes, updateUnlikes } from "../../store/actions/tweetActions";
 import "./tweet.styles.scss";
 
 function Tweet(props) {
+  const id = {
+    tweetId: props.tweet._id,
+    userId: props.userInfo._id,
+  };
+
   return (
     <Card variant="outlined" id="tweet-container">
       <div className="containerr">
@@ -37,9 +44,22 @@ function Tweet(props) {
                 <p>{props.tweet.comments.length}</p>
               </div>
             </Link>
-            <div className="heart-icon">
-              <FavoriteBorderOutlinedIcon /> <p>3</p>
-            </div>
+            {props.tweet.likes.includes(props.userInfo._id) ? (
+              <div
+                style={{ color: "pink" }}
+                className="heart-icon"
+                onClick={props.updateUnlikes.bind(null, id)}
+              >
+                <FavoriteBorderOutlinedIcon /> <p>{props.tweet.likes.length}</p>
+              </div>
+            ) : (
+              <div
+                className="heart-icon"
+                onClick={props.updateLikes.bind(null, id)}
+              >
+                <FavoriteBorderOutlinedIcon /> <p>{props.tweet.likes.length}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -47,4 +67,4 @@ function Tweet(props) {
   );
 }
 
-export default Tweet;
+export default connect(null, { updateLikes, updateUnlikes })(Tweet);
