@@ -68,6 +68,7 @@ export const comment = (data) => {
   };
 };
 
+// like tweet
 export const updateLikes = (data) => {
   return (dispatch) => {
     axios
@@ -86,6 +87,7 @@ export const updateLikes = (data) => {
   };
 };
 
+// unlike tweet
 export const updateUnlikes = (data) => {
   return (dispatch) => {
     axios

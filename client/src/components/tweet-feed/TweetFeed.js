@@ -13,7 +13,7 @@ function TweetFeed(props) {
 
   return (
     <div>
-      <CommentHeader tweet={currenttweet} />
+      <CommentHeader tweet={currenttweet} userInfo={props.userInfo} />
       <CommentList tweet={currenttweet} />
     </div>
   );
@@ -22,6 +22,7 @@ function TweetFeed(props) {
 const mapStateToProps = (state) => {
   return {
     tweetInfo: state.tweetReducer.tweets,
+    userInfo: state.userReducer.userInfo,
   };
 };
 

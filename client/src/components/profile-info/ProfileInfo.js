@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import ProfileDesign from "../profile-design/ProfileDesign";
 import SetupButton from "../util/setup-button/SetupButton";
 import Card from "@material-ui/core/Card";
+import ProfileTabs from "../profile-tabs/ProfileTabs";
 import { connect } from "react-redux";
 import moment from "moment";
 import "./profile-info.styles.scss";
@@ -52,6 +53,7 @@ function ProfileInfo(props) {
           </div>
         </div>
       </Card>
+      <ProfileTabs />
     </div>
   );
 }

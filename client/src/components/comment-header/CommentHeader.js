@@ -6,9 +6,16 @@ import { Avatar } from "@material-ui/core";
 import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@material-ui/icons/FavoriteBorderOutlined";
 import CommentDialog from "../util/comment-dialog/CommentDialog";
+import { updateLikes, updateUnlikes } from "../../store/actions/tweetActions";
+import { connect } from "react-redux";
 import "./comment-header.styles.scss";
 
 function CommentHeader(props) {
+  const id = {
+    tweetId: props.tweet._id,
+    userId: props.userInfo._id,
+  };
+
   return (
     <div id="comment-header-container">
       <Card variant="outlined">
@@ -44,11 +51,27 @@ function CommentHeader(props) {
             </div>
             <div className="icons">
               <div className="comment-icon">
-                <ChatBubbleOutlineOutlinedIcon /> <p>3</p>
+                <ChatBubbleOutlineOutlinedIcon />{" "}
+                <p>{props.tweet.comments.length}</p>
               </div>
-              <div className="heart-icon">
-                <FavoriteBorderOutlinedIcon /> <p>3</p>
-              </div>
+              {props.tweet.likes.includes(props.userInfo._id) ? (
+                <div
+                  style={{ color: "pink" }}
+                  className="heart-icon"
+                  onClick={props.updateUnlikes.bind(null, id)}
+                >
+                  <FavoriteBorderOutlinedIcon />{" "}
+                  <p>{props.tweet.likes.length}</p>
+                </div>
+              ) : (
+                <div
+                  className="heart-icon"
+                  onClick={props.updateLikes.bind(null, id)}
+                >
+                  <FavoriteBorderOutlinedIcon />{" "}
+                  <p>{props.tweet.likes.length}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -61,4 +84,4 @@ function CommentHeader(props) {
   );
 }
 
-export default CommentHeader;
+export default connect(null, { updateLikes, updateUnlikes })(CommentHeader);
