@@ -3,6 +3,7 @@ import Card from "@material-ui/core/Card";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import ProfileTweetList from "../profile-tweet-list/ProfileTweetList";
+import ProfileFollowingList from "../profile-following-list/ProfileFollowingList";
 
 function ProfileTabs(props) {
   const [value, setValue] = useState(0);
@@ -24,7 +25,7 @@ function ProfileTabs(props) {
           <Tab label="Following" />
         </Tabs>
       </Card>
-      {value === 0 ? <ProfileTweetList /> : <p>Following</p>}
+      {value === 0 ? <ProfileTweetList /> : <ProfileFollowingList />}
     </div>
   );
 }
