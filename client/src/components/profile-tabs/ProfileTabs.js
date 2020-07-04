@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import Paper from "@material-ui/core/Paper";
+import Card from "@material-ui/core/Card";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import ProfileTweetList from "../profile-tweet-list/ProfileTweetList";
 
 function ProfileTabs(props) {
   const [value, setValue] = useState(0);
@@ -12,19 +13,18 @@ function ProfileTabs(props) {
 
   return (
     <div>
-      <Paper>
+      <Card variant="outlined">
         <Tabs
           value={value}
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
-          centered
         >
           <Tab label="Tweets" />
           <Tab label="Following" />
         </Tabs>
-      </Paper>
-      {value === 0 ? <p>tweets</p> : <p>Following</p>}
+      </Card>
+      {value === 0 ? <ProfileTweetList /> : <p>Following</p>}
     </div>
   );
 }

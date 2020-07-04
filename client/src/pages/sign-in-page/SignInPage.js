@@ -51,7 +51,7 @@ function SignInPage(props) {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button variant="contained" color="primary" size="large" type="submit">
-          Sign Up
+          Sign In
         </Button>
         <div className="links">
           <Link to="/signup">Sign Up</Link>

@@ -61,7 +61,7 @@ function SignUpPage(props) {
           Sign Up
         </Button>
         <div className="links">
-          <Link to="/signup">Sign Up</Link>
+          <Link to="/signin">Sign In</Link>
         </div>
       </form>
     </div>
