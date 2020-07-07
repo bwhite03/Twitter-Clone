@@ -42,11 +42,12 @@ export const updateFollowing = (id) => {
     axios
       .put(`/updatefollowing/${id.userId}`, {
         user: id.followId,
+        follower: id.userId,
       })
       .then(() => {
         dispatch({
           type: UPDATE_FOLLOWING,
-          payload: id.followId,
+          payload: id,
         });
       })
       .catch(function (error) {
@@ -60,11 +61,12 @@ export const updateUnfollowing = (id) => {
     axios
       .put(`/updateunfollowing/${id.userId}`, {
         user: id.followId,
+        follower: id.userId,
       })
       .then(() => {
         dispatch({
           type: UPDATE_UNFOLLOWING,
-          payload: id.followId,
+          payload: id,
         });
       })
       .catch(function (error) {

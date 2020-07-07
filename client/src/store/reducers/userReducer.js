@@ -19,8 +19,13 @@ const userReducer = (state = userDefaultState, action) => {
         ...state,
         userInfo: {
           ...state.userInfo,
-          following: [...state.userInfo.following, action.payload],
+          following: [...state.userInfo.following, action.payload.followId],
         },
+        users: state.users.map((user) =>
+          user._id === action.payload.followId
+            ? { ...user, followers: [...user.followers, action.payload.userId] }
+            : user
+        ),
       };
     case UPDATE_UNFOLLOWING:
       return {
@@ -28,9 +33,19 @@ const userReducer = (state = userDefaultState, action) => {
         userInfo: {
           ...state.userInfo,
           following: state.userInfo.following.filter(
-            (user) => user !== action.payload
+            (user) => user !== action.payload.followId
           ),
         },
+        users: state.users.map((user) =>
+          user._id === action.payload.followId
+            ? {
+                ...user,
+                followers: user.followers.filter(
+                  (user) => user !== action.payload.userId
+                ),
+              }
+            : user
+        ),
       };
     default:
       return state;

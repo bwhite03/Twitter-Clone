@@ -99,6 +99,15 @@ router.put("/updatefollowing/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+
+  // update followers following
+  User.findOneAndUpdate(
+    { _id: req.body.user },
+    { $push: { followers: req.body.follower } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
   res.end();
 });
 
@@ -107,6 +116,15 @@ router.put("/updateunfollowing/:id", (req, res) => {
   User.findOneAndUpdate(
     { _id: req.params.id },
     { $pull: { following: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+
+  // update followers following
+  User.findOneAndUpdate(
+    { _id: req.body.user },
+    { $pull: { followers: req.body.follower } },
     { new: true, runValidators: true }
   ).catch((err) => {
     console.error(err);
