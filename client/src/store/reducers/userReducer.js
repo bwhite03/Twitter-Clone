@@ -2,6 +2,7 @@ import { FETCH_USER } from "../actions/userActions";
 import { FETCH_USERS } from "../actions/userActions";
 import { UPDATE_FOLLOWING } from "../actions/userActions";
 import { UPDATE_UNFOLLOWING } from "../actions/userActions";
+import { UPDATE_PROFILE } from "../actions/userActions";
 
 const userDefaultState = {
   userInfo: {},
@@ -46,6 +47,17 @@ const userReducer = (state = userDefaultState, action) => {
               }
             : user
         ),
+      };
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          profileImg: action.payload.profileImg,
+          profileBackground: action.payload.profileBackground,
+          location: action.payload.location,
+          bio: action.payload.bio,
+        },
       };
     default:
       return state;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ProfileDesign from "../profile-design/ProfileDesign";
-import SetupButton from "../util/setup-button/SetupButton";
+import SetupProfileDialog from "../util/setup-profile-dialog/SetupProfileDialog";
 import Card from "@material-ui/core/Card";
 import ProfileTabs from "../profile-tabs/ProfileTabs";
 import { connect } from "react-redux";
@@ -23,20 +23,26 @@ function ProfileInfo(props) {
         <ProfileDesign userInfo={userInfo} />
         <div className="profile-info-bio">
           <div className="button">
-            <SetupButton />
+            <SetupProfileDialog />
           </div>
           <h1>{userInfo.username}</h1>
           <p className="atUsername">@{userInfo.username}</p>
-          <p className="bio">
-            Educating and inspiring people to create, publish and flourish by
-            designing life and business for happiness and fulfillment.
-          </p>
-          <p className="location">
-            <span>
-              <i className="fas fa-map-marker-alt"></i>
-            </span>
-            San Diego, California
-          </p>
+          <p className="bio">{userInfo.bio}</p>
+          {userInfo.location ? (
+            <p className="location">
+              <span>
+                <i className="fas fa-map-marker-alt"></i>
+              </span>
+              {userInfo.location}
+            </p>
+          ) : (
+            <p className="location">
+              <span>
+                <i className="fas fa-map-marker-alt"></i>
+              </span>
+              Private
+            </p>
+          )}
           <p className="joined">
             <span>
               <i className="fas fa-calendar-alt"></i>

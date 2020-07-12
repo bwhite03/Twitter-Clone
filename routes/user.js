@@ -60,6 +60,8 @@ router.post("/signup", async (req, res) => {
     dateCreated: req.body.dateCreated,
     profileImg: req.body.profileImg,
     profileBackground: req.body.profileBackground,
+    location: req.body.location,
+    bio: req.body.bio,
   });
 
   newUser.save((err, user) => {
@@ -129,6 +131,26 @@ router.put("/updateunfollowing/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+  res.end();
+});
+
+// update user profile
+router.put("/updateprofile/:id", (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    {
+      $set: {
+        profileImg: req.body.profileImg,
+        profileBackground: req.body.profileBackground,
+        location: req.body.location,
+        bio: req.body.bio,
+      },
+    },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+
   res.end();
 });
 

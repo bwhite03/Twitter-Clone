@@ -3,6 +3,7 @@ export const FETCH_USER = "FETCH_USER";
 export const FETCH_USERS = "FETCH_USERS";
 export const UPDATE_FOLLOWING = "UPDATE_FOLLOWING";
 export const UPDATE_UNFOLLOWING = "UPDATE_UNFOLLOWING";
+export const UPDATE_PROFILE = "UPDATE_PROFILE";
 
 export const fetchUser = () => {
   const token = localStorage.getItem("auth-token");
@@ -67,6 +68,27 @@ export const updateUnfollowing = (id) => {
         dispatch({
           type: UPDATE_UNFOLLOWING,
           payload: id,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const updateProfile = (data) => {
+  return (dispatch) => {
+    axios
+      .put(`/updateprofile/${data.userId}`, {
+        profileImg: data.profileImg,
+        profileBackground: data.profileBackground,
+        location: data.location,
+        bio: data.bio,
+      })
+      .then(() => {
+        dispatch({
+          type: UPDATE_PROFILE,
+          payload: data,
         });
       })
       .catch(function (error) {
