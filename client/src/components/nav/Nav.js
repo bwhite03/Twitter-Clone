@@ -46,7 +46,7 @@ function Nav(props) {
               <ListItemText primary="Explore" />
             </ListItem>
           </NavLink>
-          <NavLink to="/">
+          <NavLink to="/notifications" exact activeClassName="active-link">
             <ListItem button>
               <ListItemIcon>
                 <NotificationsNoneOutlinedIcon />
