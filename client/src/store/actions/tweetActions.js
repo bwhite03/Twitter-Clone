@@ -55,6 +55,7 @@ export const comment = (data) => {
         tweetid: data._id,
         userid: data.userid,
         id: data.id,
+        notification: data.notification,
       })
       .then(() => {
         dispatch({

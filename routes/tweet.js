@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Tweet = require("../models/tweet.model");
+const User = require("../models/users.model");
 
 // post tweet
 router.post("/tweet", (req, res) => {
@@ -50,6 +51,20 @@ router.put("/comment/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+
+  // send notification to user who tweeted
+  User.findOneAndUpdate(
+    { _id: req.body.userid },
+    {
+      $push: {
+        notifications: req.body.notification,
+      },
+    },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+
   res.end();
 });
 

@@ -33,6 +33,10 @@ function CommentDialog(props) {
     username: props.userInfo.username,
     profileImg: props.userInfo.profileImg,
     userid: props.userInfo._id,
+    notification: {
+      message: `${props.userInfo.username} commented on your tweet`,
+      userId: props.userInfo._id,
+    },
   };
 
   return (
