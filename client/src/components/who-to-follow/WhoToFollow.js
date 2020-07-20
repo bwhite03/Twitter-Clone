@@ -17,6 +17,10 @@ function WhoToFollow(props) {
   const id = {
     userId: props.userInfo._id,
     followId: props.follow._id,
+    notification: {
+      message: `${props.userInfo.username} is following you`,
+      userId: props.userInfo._id,
+    },
   };
 
   return (

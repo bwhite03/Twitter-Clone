@@ -44,6 +44,7 @@ export const updateFollowing = (id) => {
       .put(`/updatefollowing/${id.userId}`, {
         user: id.followId,
         follower: id.userId,
+        notification: id.notification,
       })
       .then(() => {
         dispatch({

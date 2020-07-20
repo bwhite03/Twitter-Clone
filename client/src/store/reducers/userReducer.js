@@ -24,7 +24,14 @@ const userReducer = (state = userDefaultState, action) => {
         },
         users: state.users.map((user) =>
           user._id === action.payload.followId
-            ? { ...user, followers: [...user.followers, action.payload.userId] }
+            ? {
+                ...user,
+                followers: [...user.followers, action.payload.userId],
+                notifications: [
+                  ...user.notifications,
+                  action.payload.notification,
+                ],
+              }
             : user
         ),
       };

@@ -102,10 +102,15 @@ router.put("/updatefollowing/:id", (req, res) => {
     console.error(err);
   });
 
-  // update followers following
+  // update followers following and notify them
   User.findOneAndUpdate(
     { _id: req.body.user },
-    { $push: { followers: req.body.follower } },
+    {
+      $push: {
+        followers: req.body.follower,
+        notifications: req.body.notification,
+      },
+    },
     { new: true, runValidators: true }
   ).catch((err) => {
     console.error(err);

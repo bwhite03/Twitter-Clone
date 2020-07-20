@@ -21,6 +21,10 @@ function ProfileInfos(props) {
   const idd = {
     userId: props.userInfo._id,
     followId: currentUser._id,
+    notification: {
+      message: `${props.userInfo.username} is following you`,
+      userId: props.userInfo._id,
+    },
   };
 
   return (
@@ -47,16 +51,22 @@ function ProfileInfos(props) {
           </div>
           <h1>{currentUser.username}</h1>
           <p className="atUsername">@{currentUser.username}</p>
-          <p className="bio">
-            Educating and inspiring people to create, publish and flourish by
-            designing life and business for happiness and fulfillment.
-          </p>
-          <p className="location">
-            <span>
-              <i className="fas fa-map-marker-alt"></i>
-            </span>
-            San Diego, California
-          </p>
+          <p className="bio">{currentUser.bio}</p>
+          {currentUser.location ? (
+            <p className="location">
+              <span>
+                <i className="fas fa-map-marker-alt"></i>
+              </span>
+              {currentUser.location}
+            </p>
+          ) : (
+            <p className="location">
+              <span>
+                <i className="fas fa-map-marker-alt"></i>
+              </span>
+              Private
+            </p>
+          )}
           <p className="joined">
             <span>
               <i className="fas fa-calendar-alt"></i>
