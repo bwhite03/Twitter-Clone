@@ -1,0 +1,19 @@
+#notification-list-container {
+  .notification-list-nav {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid rgb(230, 236, 240);
+
+    a {
+      align-self: center;
+      .fa-arrow-left {
+        color: #00acee;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+      padding-left: 20px;
+    }
+  }
+}

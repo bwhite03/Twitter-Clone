@@ -155,7 +155,18 @@ router.put("/updateprofile/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+  res.end();
+});
 
+// clear user notifications
+router.put("/clearnotifications/:id", (req, res) => {
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    { $set: { notifications: [] } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
   res.end();
 });
 

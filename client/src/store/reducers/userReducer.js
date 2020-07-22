@@ -3,6 +3,7 @@ import { FETCH_USERS } from "../actions/userActions";
 import { UPDATE_FOLLOWING } from "../actions/userActions";
 import { UPDATE_UNFOLLOWING } from "../actions/userActions";
 import { UPDATE_PROFILE } from "../actions/userActions";
+import { CLEAR_NOTIFICATIONS } from "../actions/userActions";
 
 const userDefaultState = {
   userInfo: {},
@@ -64,6 +65,14 @@ const userReducer = (state = userDefaultState, action) => {
           profileBackground: action.payload.profileBackground,
           location: action.payload.location,
           bio: action.payload.bio,
+        },
+      };
+    case CLEAR_NOTIFICATIONS:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          notifications: [],
         },
       };
     default:
