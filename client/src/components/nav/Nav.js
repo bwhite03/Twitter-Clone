@@ -13,6 +13,7 @@ import BookmarkBorderOutlinedIcon from "@material-ui/icons/BookmarkBorderOutline
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Chip from "@material-ui/core/Chip";
+import Badge from "@material-ui/core/Badge";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./nav.styles.scss";
@@ -49,7 +50,12 @@ function Nav(props) {
           <NavLink to="/notifications" exact activeClassName="active-link">
             <ListItem button>
               <ListItemIcon>
-                <NotificationsNoneOutlinedIcon />
+                <Badge
+                  badgeContent={props.userInfo.notifications.length}
+                  color="primary"
+                >
+                  <NotificationsNoneOutlinedIcon />
+                </Badge>
               </ListItemIcon>
               <ListItemText primary="Notifications" />
             </ListItem>

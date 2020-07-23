@@ -76,7 +76,7 @@ function CommentHeader(props) {
           </div>
         </div>
         <div className="likes">
-          <p>1k Likes</p>
+          <p>{props.tweet.likes.length} Likes</p>
           <CommentDialog id={props.tweet._id} />
         </div>
       </Card>
