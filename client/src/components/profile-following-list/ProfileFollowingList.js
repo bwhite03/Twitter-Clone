@@ -20,7 +20,6 @@ function ProfileFollowingList(props) {
 }
 const mapStateToProps = (state) => {
   return {
-    userInfo: state.userReducer.userInfo,
     users: state.userReducer.users,
   };
 };

@@ -4,6 +4,7 @@ import ProfileDesigns from "../profile-designs/ProfileDesigns";
 import FollowButton from "../util/follow-button/FollowButton";
 import UnfollowButton from "../util/unfollow-button/UnfollowButton";
 import Card from "@material-ui/core/Card";
+import ProfileTabs from "../profile-tabs/ProfileTabs";
 import { connect } from "react-redux";
 import {
   updateFollowing,
@@ -83,6 +84,7 @@ function ProfileInfos(props) {
           </div>
         </div>
       </Card>
+      <ProfileTabs userInfo={currentUser} />
     </div>
   );
 }

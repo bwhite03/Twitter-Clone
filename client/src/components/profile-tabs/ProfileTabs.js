@@ -25,7 +25,11 @@ function ProfileTabs(props) {
           <Tab label="Following" />
         </Tabs>
       </Card>
-      {value === 0 ? <ProfileTweetList /> : <ProfileFollowingList />}
+      {value === 0 ? (
+        <ProfileTweetList userInfo={props.userInfo} />
+      ) : (
+        <ProfileFollowingList userInfo={props.userInfo} />
+      )}
     </div>
   );
 }

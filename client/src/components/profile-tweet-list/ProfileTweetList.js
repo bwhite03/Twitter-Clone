@@ -21,7 +21,6 @@ function ProfileTweetList(props) {
 
 const mapStateToProps = (state) => {
   return {
-    userInfo: state.userReducer.userInfo,
     tweetInfo: state.tweetReducer.tweets,
   };
 };

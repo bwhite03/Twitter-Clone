@@ -59,7 +59,7 @@ function ProfileInfo(props) {
           </div>
         </div>
       </Card>
-      <ProfileTabs />
+      <ProfileTabs userInfo={props.userInfo} />
     </div>
   );
 }

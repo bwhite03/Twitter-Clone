@@ -21,17 +21,19 @@ function TweetDialog(props) {
     setOpen(false);
   };
 
-  const submitTweet = () => {
-    props.tweet(data);
-    setContent("");
-    setOpen(false);
-  };
-
   const data = {
     content: content,
     username: props.userInfo.username,
     profileImg: props.userInfo.profileImg,
     userid: props.userInfo._id,
+    comments: [],
+    likes: [],
+  };
+
+  const submitTweet = () => {
+    props.tweet(data);
+    setContent("");
+    setOpen(false);
   };
 
   return (
