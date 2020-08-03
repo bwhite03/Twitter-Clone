@@ -62,6 +62,7 @@ router.post("/signup", async (req, res) => {
     profileBackground: req.body.profileBackground,
     location: req.body.location,
     bio: req.body.bio,
+    message: req.body.messages,
   });
 
   newUser.save((err, user) => {

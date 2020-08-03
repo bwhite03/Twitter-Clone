@@ -60,7 +60,7 @@ function Nav(props) {
               <ListItemText primary="Notifications" />
             </ListItem>
           </NavLink>
-          <NavLink to="/">
+          <NavLink to="/messages" exact activeClassName="active-link">
             <ListItem button>
               <ListItemIcon>
                 <EmailOutlinedIcon />

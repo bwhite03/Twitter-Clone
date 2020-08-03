@@ -34,6 +34,7 @@ const UserSchema = new mongoose.Schema({
     default: "",
   },
   notifications: [],
+  messages: [],
   following: [],
   followers: [],
 });
