@@ -10,12 +10,11 @@ import { updateLikes, updateUnlikes } from "../../store/actions/tweetActions";
 import { connect } from "react-redux";
 import "./comment-header.styles.scss";
 
-function CommentHeader(props) {
+function CommentHeader({ tweet, userInfo, updateLikes, updateUnlikes }) {
   const id = {
-    tweetId: props.tweet._id,
-    userId: props.userInfo._id,
+    tweetId: tweet._id,
+    userId: userInfo._id,
   };
-
   return (
     <div id="comment-header-container">
       <Card variant="outlined">
@@ -27,57 +26,52 @@ function CommentHeader(props) {
         </div>
         <div className="container">
           <div className="avatar">
-            {props.tweet.profileImg ? (
-              <Avatar src={props.tweet.profileImg} alt="userimg" sizes={"lg"} />
+            {tweet.profileImg ? (
+              <Avatar src={tweet.profileImg} alt="userimg" sizes={"lg"} />
             ) : (
               <Avatar alt="userimg" sizes={"lg"}>
-                {props.tweet.username === undefined
+                {tweet.username === undefined
                   ? ""
-                  : props.tweet.username.charAt(0).toUpperCase()}
+                  : tweet.username.charAt(0).toUpperCase()}
               </Avatar>
             )}
           </div>
           <div style={{ width: "100%" }}>
             <div className="comment-info">
-              <Link to={`/${props.tweet.userid}`}>
-                <p className="username">{props.tweet.username}</p>
+              <Link to={`/${tweet.userid}`}>
+                <p className="username">{tweet.username}</p>
               </Link>
-              <p className="date">
-                {moment(props.tweet.dateCreated).calendar()}
-              </p>
+              <p className="date">{moment(tweet.dateCreated).calendar()}</p>
             </div>
             <div className="content-container">
-              <p>{props.tweet.content}</p>
+              <p>{tweet.content}</p>
             </div>
             <div className="icons">
               <div className="comment-icon">
-                <ChatBubbleOutlineOutlinedIcon />{" "}
-                <p>{props.tweet.comments.length}</p>
+                <ChatBubbleOutlineOutlinedIcon /> <p>{tweet.comments.length}</p>
               </div>
-              {props.tweet.likes.includes(props.userInfo._id) ? (
+              {tweet.likes.includes(userInfo._id) ? (
                 <div
                   style={{ color: "pink" }}
                   className="heart-icon"
-                  onClick={props.updateUnlikes.bind(null, id)}
+                  onClick={updateUnlikes.bind(null, id)}
                 >
-                  <FavoriteBorderOutlinedIcon />{" "}
-                  <p>{props.tweet.likes.length}</p>
+                  <FavoriteBorderOutlinedIcon /> <p>{tweet.likes.length}</p>
                 </div>
               ) : (
                 <div
                   className="heart-icon"
-                  onClick={props.updateLikes.bind(null, id)}
+                  onClick={updateLikes.bind(null, id)}
                 >
-                  <FavoriteBorderOutlinedIcon />{" "}
-                  <p>{props.tweet.likes.length}</p>
+                  <FavoriteBorderOutlinedIcon /> <p>{tweet.likes.length}</p>
                 </div>
               )}
             </div>
           </div>
         </div>
         <div className="likes">
-          <p>{props.tweet.likes.length} Likes</p>
-          <CommentDialog id={props.tweet._id} />
+          <p>{tweet.likes.length} Likes</p>
+          <CommentDialog id={tweet._id} />
         </div>
       </Card>
     </div>
