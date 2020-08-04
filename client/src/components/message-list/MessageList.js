@@ -3,16 +3,32 @@ import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import MessageDialog from "../util/message-dialog/MessageDialog";
+import { connect } from "react-redux";
+import { createMessage } from "../../store/actions/userActions";
 import "./message-list.styles.scss";
 
-function MessageList() {
+function MessageList(props) {
   const [open, setOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [content, setContent] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const data = {
+    content: content,
+    userInfo: props.userInfo,
+    user: user,
+  };
+
+  const createMessage = () => {
+    props.createMessage(data);
+    setContent("");
     setOpen(false);
   };
 
@@ -29,9 +45,23 @@ function MessageList() {
           </div>
         </div>
       </Card>
-      <MessageDialog handleClose={handleClose} open={open} />
+      <MessageDialog
+        handleClose={handleClose}
+        open={open}
+        setUser={setUser}
+        user={user}
+        setContent={setContent}
+        content={content}
+        createMessage={createMessage}
+      />
     </div>
   );
 }
 
-export default MessageList;
+const mapStateToProps = (state) => {
+  return {
+    userInfo: state.userReducer.userInfo,
+  };
+};
+
+export default connect(mapStateToProps, { createMessage })(MessageList);

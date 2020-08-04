@@ -10,8 +10,6 @@ import MessageSearchList from "../../message-search-list/MessageSearchList";
 import { connect } from "react-redux";
 
 function MessageDialog(props) {
-  const [content, setContent] = useState("");
-  const [user, setUser] = useState(null);
   const [search, setSearch] = useState("");
 
   const handleChange = (e) => {
@@ -19,7 +17,7 @@ function MessageDialog(props) {
   };
 
   const handleDelete = () => {
-    setUser(null);
+    props.setUser(null);
   };
 
   const filteredUsers = props.users.filter((user) => {
@@ -36,28 +34,44 @@ function MessageDialog(props) {
       >
         <DialogTitle id="form-dialog-title">Message</DialogTitle>
         <DialogContent>
-          {user && (
-            <Chip size="small" label={user.username} onDelete={handleDelete} />
+          {props.user && (
+            <Chip
+              size="small"
+              label={props.user.username}
+              onDelete={handleDelete}
+            />
           )}
-          <TextField
-            onChange={handleChange}
-            id="standard-basic"
-            label="Search user to message"
-            size="small"
-            style={{ width: "100%" }}
-            value={search}
-          />
+          {props.user ? (
+            <TextField
+              onChange={(e) => props.setContent(e.target.value)}
+              id="standard-multiline-flexible"
+              multiline
+              label="Send message"
+              size="small"
+              style={{ width: "100%" }}
+              value={props.content}
+            />
+          ) : (
+            <TextField
+              onChange={handleChange}
+              id="standard-basic"
+              label="Search user to message"
+              size="small"
+              style={{ width: "100%" }}
+              value={search}
+            />
+          )}
           {search && (
             <MessageSearchList
               filteredUsers={filteredUsers}
-              setUser={setUser}
+              setUser={props.setUser}
               setSearch={setSearch}
             />
           )}
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose}>Cancel</Button>
-          <Button>Message</Button>
+          <Button onClick={props.createMessage}>Message</Button>
         </DialogActions>
       </Dialog>
     </div>

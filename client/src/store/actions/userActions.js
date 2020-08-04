@@ -5,6 +5,7 @@ export const UPDATE_FOLLOWING = "UPDATE_FOLLOWING";
 export const UPDATE_UNFOLLOWING = "UPDATE_UNFOLLOWING";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const CLEAR_NOTIFICATIONS = "CLEAR_NOTIFICATIONS";
+export const CREATE_MESSAGE = "CREATE_MESSAGE";
 
 export const fetchUser = () => {
   const token = localStorage.getItem("auth-token");
@@ -109,6 +110,27 @@ export const clearNotifications = (data) => {
           payload: data,
         });
       })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+// TODO: do redux
+export const createMessage = (data) => {
+  return (dispatch) => {
+    axios
+      .put(`/createmessages/${data.user._id}`, {
+        content: data.content,
+        userInfo: data.userInfo,
+        user: data.user,
+      })
+      // .then(() => {
+      //   dispatch({
+      //     // type: UPDATE_PROFILE,
+      //     // payload: data,
+      //   });
+      // })
       .catch(function (error) {
         console.log(error);
       });
