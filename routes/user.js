@@ -171,33 +171,4 @@ router.put("/clearnotifications/:id", (req, res) => {
   res.end();
 });
 
-// create messages to other user
-router.put("/createmessages/:id", (req, res) => {
-  User.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $push: {
-        messages: { content: [req.body.content], userInfo: req.body.userInfo },
-      },
-    },
-    { new: true, runValidators: true }
-  ).catch((err) => {
-    console.error(err);
-  });
-
-  // create message to user
-  User.findOneAndUpdate(
-    { _id: req.body.userInfo._id },
-    {
-      $push: {
-        messages: { content: [req.body.content], userInfo: req.body.user },
-      },
-    },
-    { new: true, runValidators: true }
-  ).catch((err) => {
-    console.error(err);
-  });
-  res.end();
-});
-
 module.exports = router;

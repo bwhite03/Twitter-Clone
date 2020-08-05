@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const UserRoute = require("./routes/user");
 const TweetRoute = require("./routes/tweet");
+const MessageRoute = require("./routes/message");
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(UserRoute);
 app.use(TweetRoute);
+app.use(MessageRoute);
 
 // Connect database
 mongoose.connect(process.env.DB_CONNECT, {

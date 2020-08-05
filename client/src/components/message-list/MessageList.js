@@ -4,7 +4,7 @@ import Card from "@material-ui/core/Card";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import MessageDialog from "../util/message-dialog/MessageDialog";
 import { connect } from "react-redux";
-import { createMessage } from "../../store/actions/userActions";
+import { createMessage } from "../../store/actions/messageActions";
 import "./message-list.styles.scss";
 
 function MessageList(props) {
@@ -21,9 +21,13 @@ function MessageList(props) {
   };
 
   const data = {
-    content: content,
-    userInfo: props.userInfo,
-    user: user,
+    message: {
+      message: content,
+      username: props.userInfo.username,
+      avatar: props.userInfo.profileImg,
+    },
+    senderInfo: props.userInfo,
+    receiverInfo: user,
   };
 
   const createMessage = () => {
