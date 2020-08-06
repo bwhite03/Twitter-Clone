@@ -1,0 +1,41 @@
+#message-container {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  MuiList-root {
+    width: 100%;
+  }
+
+  .MuiList-padding {
+    padding: 0;
+  }
+
+  .follow-img-container {
+    .MuiAvatar-root {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .follow-user-info-container {
+    align-self: center;
+    padding-left: 10px;
+
+    .at-username {
+      color: gray;
+    }
+  }
+
+  MuiList-root {
+    width: 100%;
+  }
+
+  .MuiList-padding {
+    padding: 0;
+  }
+}

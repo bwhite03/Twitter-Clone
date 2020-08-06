@@ -1,7 +1,23 @@
 import axios from "axios";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
+export const FETCH_MESSAGES = "FETCH_MESSAGES";
 
-// TODO: do redux
+export const fetchMessages = () => {
+  return (dispatch) => {
+    axios
+      .get("/messages")
+      .then((res) => {
+        dispatch({
+          type: FETCH_MESSAGES,
+          payload: res.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
 export const createMessage = (data) => {
   return (dispatch) => {
     axios

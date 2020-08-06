@@ -5,6 +5,7 @@ import SideInfo from "../../components/side-info/SideInfo";
 import { connect } from "react-redux";
 import { fetchUser, fetchUsers } from "../../store/actions/userActions";
 import { fetchTweets } from "../../store/actions/tweetActions";
+import { fetchMessages } from "../../store/actions/messageActions";
 import "./homepage.styles.scss";
 
 function HomePage(props) {
@@ -13,6 +14,7 @@ function HomePage(props) {
     props.fetchUser();
     props.fetchUsers();
     props.fetchTweets();
+    props.fetchMessages();
   }, []);
 
   return (
@@ -27,4 +29,9 @@ function HomePage(props) {
   );
 }
 
-export default connect(null, { fetchUser, fetchUsers, fetchTweets })(HomePage);
+export default connect(null, {
+  fetchUser,
+  fetchUsers,
+  fetchTweets,
+  fetchMessages,
+})(HomePage);

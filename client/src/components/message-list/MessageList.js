@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import MessageDialog from "../util/message-dialog/MessageDialog";
+import Message from "../message/Message";
 import { connect } from "react-redux";
 import { createMessage } from "../../store/actions/messageActions";
 import "./message-list.styles.scss";
@@ -36,6 +37,13 @@ function MessageList(props) {
     setOpen(false);
   };
 
+  const filteredMessages = props.messages.filter((message) => {
+    return (
+      props.userInfo._id === message.receiverInfo._id ||
+      props.userInfo._id === message.senderInfo._id
+    );
+  });
+
   return (
     <div id="message-list-container">
       <Card variant="outlined">
@@ -48,6 +56,9 @@ function MessageList(props) {
             <ChatOutlinedIcon />
           </div>
         </div>
+        {filteredMessages.map((message, index) => (
+          <Message key={message._id} message={message} />
+        ))}
       </Card>
       <MessageDialog
         handleClose={handleClose}
@@ -65,6 +76,7 @@ function MessageList(props) {
 const mapStateToProps = (state) => {
   return {
     userInfo: state.userReducer.userInfo,
+    messages: state.messageReducer.messages,
   };
 };
 
