@@ -1,40 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
+import DeleteMessageButton from "../util/delete-message-button/DeleteMessageButton";
+import { connect } from "react-redux";
+import { fetchMessages } from "../../store/actions/messageActions";
 import moment from "moment";
 import "./message.styles.scss";
 
-function Message(props) {
+function Message({ message, fetchMessages }) {
+  useEffect(() => {
+    fetchMessages();
+  }, [fetchMessages]);
+
   return (
     <div id="message-container">
       <List component="nav" style={{ width: "100%" }}>
-        <ListItem button>
-          <Link to="/messages">
-            <div style={{ display: "flex" }}>
-              {props.message.senderInfo.profileImg ? (
-                <Avatar
-                  src={props.message.senderInfo.profileImg}
-                  alt="userimg"
-                  sizes={"lg"}
-                />
-              ) : (
-                <Avatar alt="userimg" sizes={"lg"}>
-                  {props.message.senderInfo.username.charAt(0).toUpperCase()}
-                </Avatar>
-              )}
-              <div className="follow-user-info-container">
-                <p>{props.message.senderInfo.username}</p>
+        <ListItem button style={{ display: "block" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+            }}
+          >
+            <Link to="/messages">
+              <div style={{ display: "flex" }}>
+                {message.senderInfo.profileImg ? (
+                  <Avatar
+                    src={message.senderInfo.profileImg}
+                    alt="userimg"
+                    sizes={"lg"}
+                  />
+                ) : (
+                  <Avatar alt="userimg" sizes={"lg"}>
+                    {message.senderInfo.username.charAt(0).toUpperCase()}
+                  </Avatar>
+                )}
+                <div className="follow-user-info-container">
+                  <p>{message.senderInfo.username}</p>
+                </div>
               </div>
-              <div>
-                <p className="date">
-                  {moment(props.message.messages[0].dateCreated).calendar()}
-                </p>
-              </div>
-            </div>
-          </Link>
+            </Link>
+            <DeleteMessageButton />
+          </div>
+          <div
+            className="info-container"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <p style={{ marginLeft: "50px" }}>
+              {!message.messages
+                ? "Loading..."
+                : message.messages[0].message.substring(0, 10) + "..."}
+            </p>
+            <p
+              style={{
+                textAlign: "right",
+                fontSize: "12px",
+                alignSelf: "center",
+              }}
+            >
+              {!message.messages
+                ? "Loading..."
+                : moment(message.messages[0].dateCreated).calendar()}
+            </p>
+          </div>
         </ListItem>
         <Divider />
       </List>
@@ -42,4 +74,4 @@ function Message(props) {
   );
 }
 
-export default Message;
+export default connect(null, { fetchMessages })(Message);
