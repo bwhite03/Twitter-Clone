@@ -1,0 +1,46 @@
+#messages-list-container {
+  .messages-list-nav {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid rgb(230, 236, 240);
+
+    a {
+      align-self: center;
+      .fa-arrow-left {
+        color: #00acee;
+      }
+    }
+
+    h1 {
+      font-size: 20px;
+      padding-left: 20px;
+    }
+
+    .icon {
+      display: flex;
+      margin-left: auto;
+      cursor: pointer;
+      color: #00acee;
+      .MuiIcon-root {
+        align-self: center;
+      }
+    }
+  }
+
+  .dm-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .dms {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .input {
+      display: flex;
+    }
+  }
+}

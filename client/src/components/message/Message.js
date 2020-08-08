@@ -18,14 +18,14 @@ function Message({ message, fetchMessages }) {
     <div id="message-container">
       <List component="nav" style={{ width: "100%" }}>
         <ListItem button style={{ display: "block" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
-            <Link to="/messages">
+          <Link to={`messages/${message._id}`}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+            >
               <div style={{ display: "flex" }}>
                 {message.senderInfo.profileImg ? (
                   <Avatar
@@ -45,21 +45,22 @@ function Message({ message, fetchMessages }) {
                   <p>{message.senderInfo.username}</p>
                 </div>
               </div>
-            </Link>
-            <p style={{ alignSelf: "center", fontSize: "12px" }}>
-              {moment(message.messages[0].dateCreated).calendar()}
-            </p>
-          </div>
-          <div
-            className="info-container"
-            style={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <p style={{ marginLeft: "50px" }}>
-              {!message.messages
-                ? "Loading..."
-                : message.messages[0].message.substring(0, 10) + "..."}
-            </p>
-          </div>
+
+              <p style={{ alignSelf: "center", fontSize: "12px" }}>
+                {moment(message.messages[0].dateCreated).calendar()}
+              </p>
+            </div>
+            <div
+              className="info-container"
+              style={{ display: "flex", justifyContent: "space-between" }}
+            >
+              <p style={{ marginLeft: "50px" }}>
+                {!message.messages
+                  ? "Loading..."
+                  : message.messages[0].message.substring(0, 10) + "..."}
+              </p>
+            </div>
+          </Link>
         </ListItem>
         <Divider />
       </List>

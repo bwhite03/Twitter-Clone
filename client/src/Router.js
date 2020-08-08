@@ -9,6 +9,7 @@ import SignInPage from "./pages/sign-in-page/SignInPage";
 import CommentPage from "./pages/commentPage/CommentPage";
 import NotificationPage from "./pages/notificationPage/NotificationPage";
 import MessagePage from "./pages/messagePage/MessagePage";
+import MessagesPage from "./pages/messagesPage/MessagesPage";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import "./App.scss";
@@ -35,6 +36,7 @@ function Router() {
             <Route exact path="/signin" component={SignInPage} />
             <Route exact path="/notifications" component={NotificationPage} />
             <Route exact path="/messages" component={MessagePage} />
+            <Route exact path="/messages/:id" component={MessagesPage} />
             <Route exact path="/:id" component={ProfilePages} />
             <Route exact path="/comment/:id" component={CommentPage} />
           </Switch>
