@@ -4,7 +4,6 @@ import { Avatar } from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
-import DeleteMessageButton from "../util/delete-message-button/DeleteMessageButton";
 import { connect } from "react-redux";
 import { fetchMessages } from "../../store/actions/messageActions";
 import moment from "moment";
@@ -39,12 +38,17 @@ function Message({ message, fetchMessages }) {
                     {message.senderInfo.username.charAt(0).toUpperCase()}
                   </Avatar>
                 )}
-                <div className="follow-user-info-container">
+                <div
+                  className="follow-user-info-container"
+                  style={{ display: "flex" }}
+                >
                   <p>{message.senderInfo.username}</p>
                 </div>
               </div>
             </Link>
-            <DeleteMessageButton />
+            <p style={{ alignSelf: "center", fontSize: "12px" }}>
+              {moment(message.messages[0].dateCreated).calendar()}
+            </p>
           </div>
           <div
             className="info-container"
@@ -54,17 +58,6 @@ function Message({ message, fetchMessages }) {
               {!message.messages
                 ? "Loading..."
                 : message.messages[0].message.substring(0, 10) + "..."}
-            </p>
-            <p
-              style={{
-                textAlign: "right",
-                fontSize: "12px",
-                alignSelf: "center",
-              }}
-            >
-              {!message.messages
-                ? "Loading..."
-                : moment(message.messages[0].dateCreated).calendar()}
             </p>
           </div>
         </ListItem>
