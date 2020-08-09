@@ -36,7 +36,7 @@ function MessagesList({ messages, userInfo, sendMessage }) {
           <Link to="/messages">
             <i className="fas fa-arrow-left"></i>
           </Link>
-          <h1 style={{ alignSelf: "center" }}>Messages</h1>
+          <h1 style={{ alignSelf: "center" }}>{userInfo.username}</h1>
           <div className="icon">
             <InfoOutlinedIcon />
           </div>
@@ -44,7 +44,7 @@ function MessagesList({ messages, userInfo, sendMessage }) {
         <div className="dm-container">
           <div className="dms">
             {currentMessage.messages.map((message, index) => (
-              <Messages key={index} message={message} />
+              <Messages key={index} message={message} userInfo={userInfo} />
             ))}
           </div>
           <div className="input">

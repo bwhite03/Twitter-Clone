@@ -45,9 +45,10 @@ function Message({ message, fetchMessages }) {
                   <p>{message.senderInfo.username}</p>
                 </div>
               </div>
-
               <p style={{ alignSelf: "center", fontSize: "12px" }}>
-                {moment(message.messages[0].dateCreated).calendar()}
+                {!message.messages
+                  ? "Loading..."
+                  : moment(message.messages[0].dateCreated).calendar()}
               </p>
             </div>
             <div
