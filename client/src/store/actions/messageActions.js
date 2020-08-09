@@ -1,6 +1,7 @@
 import axios from "axios";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const FETCH_MESSAGES = "FETCH_MESSAGES";
+export const SEND_MESSAGE = "SEND_MESSAGE";
 
 export const fetchMessages = () => {
   return (dispatch) => {
@@ -29,6 +30,26 @@ export const createMessage = (data) => {
       .then(() => {
         dispatch({
           type: CREATE_MESSAGE,
+          payload: data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const sendMessage = (data) => {
+  return (dispatch) => {
+    axios
+      .put(`/message/${data.id}`, {
+        message: data.message,
+        username: data.username,
+        avatar: data.avatar,
+      })
+      .then(() => {
+        dispatch({
+          type: SEND_MESSAGE,
           payload: data,
         });
       })

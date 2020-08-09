@@ -24,16 +24,36 @@ router.post("/createmessages", (req, res) => {
       avatar: req.body.message.avatar,
       dateCreated: req.body.dateCreated,
     },
-    //messages: req.body.message,
   });
 
-  newMessage.save((err, tweet) => {
+  newMessage.save((err, message) => {
     if (err) {
       console.log(err);
     } else {
       res.end();
     }
   });
+});
+
+//send message
+router.put("/message/:id", (req, res) => {
+  const newMessage = new Message({
+    messages: {
+      message: req.body.message,
+      username: req.body.username,
+      avatar: req.body.avatar,
+      dateCreated: req.body.dateCreated,
+    },
+  });
+
+  Message.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { messages: newMessage.messages } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
 });
 
 module.exports = router;
