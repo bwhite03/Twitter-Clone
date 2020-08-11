@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
+import Tooltip from "@material-ui/core/Tooltip";
 import TextField from "@material-ui/core/TextField";
 import Messages from "../messages/Messages";
 import { sendMessage } from "../../store/actions/messageActions";
@@ -38,7 +39,9 @@ function MessagesList({ messages, userInfo, sendMessage }) {
           </Link>
           <h1 style={{ alignSelf: "center" }}>{userInfo.username}</h1>
           <div className="icon">
-            <InfoOutlinedIcon />
+            <Tooltip title="Delete Messages">
+              <DeleteOutlineOutlinedIcon />
+            </Tooltip>
           </div>
         </div>
         <div className="dm-container">

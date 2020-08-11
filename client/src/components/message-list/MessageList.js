@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "@material-ui/core/Card";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import MessageDialog from "../util/message-dialog/MessageDialog";
+import Tooltip from "@material-ui/core/Tooltip";
 import Message from "../message/Message";
 import { connect } from "react-redux";
 import { createMessage } from "../../store/actions/messageActions";
@@ -53,7 +54,9 @@ function MessageList(props) {
           </Link>
           <h1 style={{ alignSelf: "center" }}>Messages</h1>
           <div className="icon" onClick={handleClickOpen}>
-            <ChatOutlinedIcon />
+            <Tooltip title="Create Message">
+              <ChatOutlinedIcon />
+            </Tooltip>
           </div>
         </div>
         {filteredMessages.map((message, index) => (
