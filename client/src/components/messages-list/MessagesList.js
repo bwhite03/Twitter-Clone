@@ -49,7 +49,7 @@ function MessagesList({ messages, userInfo, sendMessage }) {
           </div>
           <div className="input">
             <TextField
-              style={{ width: "100%" }}
+              style={{ width: "100%", paddingRight: "10px" }}
               id="standard-multiline-flexible"
               variant="outlined"
               size="small"
@@ -59,7 +59,11 @@ function MessagesList({ messages, userInfo, sendMessage }) {
               value={content}
             />
             <SendOutlinedIcon
-              style={{ alignSelf: "center" }}
+              style={{
+                alignSelf: "center",
+                color: "#00acee",
+                cursor: "pointer",
+              }}
               onClick={submitMessage}
             />
           </div>
