@@ -56,4 +56,15 @@ router.put("/message/:id", (req, res) => {
   res.end();
 });
 
+//delete message
+router.delete("/deletemessage/:id", (req, res) => {
+  Message.deleteOne(
+    { _id: req.params.id },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
 module.exports = router;

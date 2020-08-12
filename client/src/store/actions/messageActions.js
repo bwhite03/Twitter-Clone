@@ -2,6 +2,7 @@ import axios from "axios";
 export const CREATE_MESSAGE = "CREATE_MESSAGE";
 export const FETCH_MESSAGES = "FETCH_MESSAGES";
 export const SEND_MESSAGE = "SEND_MESSAGE";
+export const DELETE_MESSAGE = "DELETE_MESSAGE";
 
 export const fetchMessages = () => {
   return (dispatch) => {
@@ -51,6 +52,22 @@ export const sendMessage = (data) => {
         dispatch({
           type: SEND_MESSAGE,
           payload: data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const deleteMessage = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`/deletemessage/${id}`, {})
+      .then(() => {
+        dispatch({
+          type: DELETE_MESSAGE,
+          payload: id,
         });
       })
       .catch(function (error) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import Card from "@material-ui/core/Card";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
@@ -7,11 +7,12 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import Tooltip from "@material-ui/core/Tooltip";
 import TextField from "@material-ui/core/TextField";
 import Messages from "../messages/Messages";
-import { sendMessage } from "../../store/actions/messageActions";
+import { sendMessage, deleteMessage } from "../../store/actions/messageActions";
 import "./messages-list.styles.scss";
 
-function MessagesList({ messages, userInfo, sendMessage }) {
+function MessagesList({ messages, userInfo, sendMessage, deleteMessage }) {
   const [content, setContent] = useState("");
+  const history = useHistory();
 
   //get param
   let { id } = useParams();
@@ -30,6 +31,11 @@ function MessagesList({ messages, userInfo, sendMessage }) {
     setContent("");
   };
 
+  const handleDelete = () => {
+    deleteMessage(id);
+    history.push("/messages");
+  };
+
   return (
     <div id="messages-list-container">
       <Card variant="outlined">
@@ -38,7 +44,7 @@ function MessagesList({ messages, userInfo, sendMessage }) {
             <i className="fas fa-arrow-left"></i>
           </Link>
           <h1 style={{ alignSelf: "center" }}>{userInfo.username}</h1>
-          <div className="icon">
+          <div className="icon" onClick={handleDelete}>
             <Tooltip title="Delete Messages">
               <DeleteOutlineOutlinedIcon />
             </Tooltip>
@@ -83,4 +89,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { sendMessage })(MessagesList);
+export default connect(mapStateToProps, { sendMessage, deleteMessage })(
+  MessagesList
+);
