@@ -46,6 +46,38 @@ function CommentHeader({ tweet, userInfo, updateLikes, updateUnlikes }) {
             <div className="content-container">
               <p>{tweet.content}</p>
             </div>
+            {tweet.retweetContent !== undefined && (
+              <div className="retweet-container">
+                <div className="avatar">
+                  {tweet.retweetContent.profileImg ? (
+                    <Avatar
+                      src={tweet.retweetContent.profileImg}
+                      alt="userimg"
+                      sizes={"lg"}
+                    />
+                  ) : (
+                    <Avatar alt="userimg" sizes={"lg"}>
+                      {tweet.retweetContent.username.charAt(0).toUpperCase()}
+                    </Avatar>
+                  )}
+                </div>
+                <div style={{ width: "100%" }}>
+                  <div className="info-container">
+                    <Link to={tweet.retweetContent.userid}>
+                      <p className="username">
+                        {tweet.retweetContent.username}
+                      </p>
+                    </Link>
+                    <p className="date">
+                      {moment(tweet.retweetContent.dateCreated).calendar()}
+                    </p>
+                  </div>
+                  <div className="content-container">
+                    <p>{tweet.retweetContent.content}</p>
+                  </div>
+                </div>
+              </div>
+            )}
             <div className="icons">
               <div className="comment-icon">
                 <ChatBubbleOutlineOutlinedIcon /> <p>{tweet.comments.length}</p>

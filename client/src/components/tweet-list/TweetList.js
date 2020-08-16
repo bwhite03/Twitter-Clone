@@ -6,7 +6,7 @@ function TweetList(props) {
   return (
     <div id="tweet-list-container">
       {props.tweets.map((tweets) => (
-        <Tweet key={tweets._id} tweet={tweets} userInfo={props.userInfo} />
+        <Tweet key={tweets._id} tweets={tweets} userInfo={props.userInfo} />
       ))}
     </div>
   );

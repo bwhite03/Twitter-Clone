@@ -17,6 +17,18 @@
     }
   }
 
+  .retweet-container {
+    border: 2px solid #e6ecf0;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+
+    .MuiAvatar-root {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
   .info-container {
     display: flex;
 
@@ -62,6 +74,21 @@
 
       &:hover {
         color: #00acee;
+      }
+
+      p {
+        padding-left: 5px;
+        color: black;
+      }
+    }
+
+    .retweet-icon {
+      display: flex;
+      margin-left: 15px;
+      cursor: pointer;
+
+      &:hover {
+        color: green;
       }
 
       p {

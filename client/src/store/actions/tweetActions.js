@@ -14,6 +14,7 @@ export const tweet = (data) => {
         username: data.username,
         userid: data.userid,
         profileImg: data.profileImg,
+        retweetContent: data.retweetContent,
       })
       .then(() => {
         dispatch({

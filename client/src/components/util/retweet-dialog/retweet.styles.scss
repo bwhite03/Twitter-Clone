@@ -1,0 +1,35 @@
+.retweet {
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 2px solid #e6ecf0;
+  display: flex;
+
+  .MuiAvatar-root {
+    width: 50px;
+    height: 50px;
+  }
+
+  .info-container {
+    display: flex;
+
+    p {
+      padding-left: 10px;
+    }
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+    }
+
+    .date {
+      color: gray;
+    }
+  }
+  .content-container {
+    text-align: left;
+    padding: 10px;
+  }
+}

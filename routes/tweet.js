@@ -11,6 +11,7 @@ router.post("/tweet", (req, res) => {
     profileImg: req.body.profileImg,
     userid: req.body.userid,
     dateCreated: req.body.dateCreated,
+    retweetContent: req.body.retweetContent,
   });
 
   newTweet.save((err, tweet) => {
