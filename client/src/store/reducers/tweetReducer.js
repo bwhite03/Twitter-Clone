@@ -3,6 +3,7 @@ import { FETCH_TWEETS } from "../actions/tweetActions";
 import { COMMENT } from "../actions/tweetActions";
 import { UPDATE_LIKES } from "../actions/tweetActions";
 import { UPDATE_UNLIKES } from "../actions/tweetActions";
+import { UPDATE_RETWEETS } from "../actions/tweetActions";
 
 const userDefaultState = {
   tweets: [],
@@ -43,6 +44,15 @@ const tweetReducer = (state = userDefaultState, action) => {
                   (user) => user !== action.payload.userId
                 ),
               }
+            : tweet
+        ),
+      };
+    case UPDATE_RETWEETS:
+      return {
+        ...state,
+        tweets: state.tweets.map((tweet) =>
+          tweet._id === action.payload.tweetId
+            ? { ...tweet, retweets: [...tweet.retweets, action.payload.userId] }
             : tweet
         ),
       };

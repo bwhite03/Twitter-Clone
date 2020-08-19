@@ -93,4 +93,16 @@ router.put("/updateunlikes/:id", (req, res) => {
   res.end();
 });
 
+// update retweet count
+router.put("/updateretweet/:id", (req, res) => {
+  Tweet.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { retweets: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
 module.exports = router;

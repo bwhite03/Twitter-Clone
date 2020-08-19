@@ -12,6 +12,7 @@ import {
   updateLikes,
   updateUnlikes,
   tweet,
+  updateRetweet,
 } from "../../store/actions/tweetActions";
 import "./tweet.styles.scss";
 
@@ -40,9 +41,11 @@ function Tweet(props) {
     comments: [],
     likes: [],
     retweetContent: props.tweets,
+    retweets: [],
   };
 
   const submitRetweet = () => {
+    props.updateRetweet(id);
     props.tweet(data);
     setContent("");
     setOpen(false);
@@ -115,7 +118,7 @@ function Tweet(props) {
             </Link>
             <div className="retweet-icon" onClick={handleClickOpen}>
               <RepeatOutlinedIcon />
-              <p>0</p>
+              <p>{props.tweets.retweets.length}</p>
             </div>
             {props.tweets.likes.includes(props.userInfo._id) ? (
               <div
@@ -156,6 +159,9 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { updateLikes, updateUnlikes, tweet })(
-  Tweet
-);
+export default connect(mapStateToProps, {
+  updateLikes,
+  updateUnlikes,
+  tweet,
+  updateRetweet,
+})(Tweet);

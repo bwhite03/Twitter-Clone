@@ -20,7 +20,7 @@ const TweetSchema = new mongoose.Schema({
     default: "",
   },
   likes: [],
-  reweets: [],
+  retweets: [],
   retweetContent: {},
   comments: [
     {

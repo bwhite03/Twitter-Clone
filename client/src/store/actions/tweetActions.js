@@ -4,6 +4,7 @@ export const FETCH_TWEETS = "FETCH_TWEETS";
 export const COMMENT = "COMMENT";
 export const UPDATE_LIKES = "UPDATELIKES";
 export const UPDATE_UNLIKES = "UPDATEUNLIKES";
+export const UPDATE_RETWEETS = "UPDATE_RETWEETS";
 
 // post tweet
 export const tweet = (data) => {
@@ -100,6 +101,25 @@ export const updateUnlikes = (data) => {
         dispatch({
           type: UPDATE_UNLIKES,
           payload: data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+// update retweet count
+export const updateRetweet = (id) => {
+  return (dispatch) => {
+    axios
+      .put(`/updateretweet/${id.tweetId}`, {
+        user: id.userId,
+      })
+      .then(() => {
+        dispatch({
+          type: UPDATE_RETWEETS,
+          payload: id,
         });
       })
       .catch(function (error) {
