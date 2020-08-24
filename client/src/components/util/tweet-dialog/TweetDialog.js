@@ -28,6 +28,7 @@ function TweetDialog(props) {
     userid: props.userInfo._id,
     comments: [],
     likes: [],
+    retweets: [],
   };
 
   const submitTweet = () => {

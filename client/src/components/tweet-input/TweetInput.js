@@ -22,6 +22,7 @@ function TweetInput(props) {
     userid: props.userInfo._id,
     comments: [],
     likes: [],
+    retweets: [],
   };
 
   return (
