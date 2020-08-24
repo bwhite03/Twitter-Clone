@@ -27,6 +27,7 @@ function RetweetDialog(props) {
             multiline
             onChange={(e) => props.setContent(e.target.value)}
             value={props.content}
+            inputProps={{ maxLength: 280 }}
           />
           <div className="retweet">
             <div className="avatar">

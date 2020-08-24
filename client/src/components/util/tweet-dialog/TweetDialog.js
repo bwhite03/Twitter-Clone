@@ -5,6 +5,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import CharactersRemaining from "../characters-remaining/CharactersRemaining";
 import { tweet } from "../../../store/actions/tweetActions";
 import { connect } from "react-redux";
 import "./tweet-dialog.styles.scss";
@@ -57,7 +58,11 @@ function TweetDialog(props) {
             multiline
             onChange={(e) => setContent(e.target.value)}
             value={content}
+            inputProps={{ maxLength: 280 }}
           />
+          <div style={{ paddingTop: "5px" }}>
+            <CharactersRemaining content={content} />
+          </div>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>

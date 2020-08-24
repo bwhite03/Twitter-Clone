@@ -3,6 +3,7 @@ import { Avatar } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import TweetButton from "../util/tweet-button/TweetButton";
 import Card from "@material-ui/core/Card";
+import CharactersRemaining from "../util/characters-remaining/CharactersRemaining";
 import { connect } from "react-redux";
 import { tweet } from "../../store/actions/tweetActions";
 import "./tweet-input.styles.scss";
@@ -52,11 +53,19 @@ function TweetInput(props) {
               multiline
               onChange={(e) => setContent(e.target.value)}
               value={content}
+              inputProps={{ maxLength: 280 }}
             />
           </form>
         </div>
-        <div className="tweet-button">
-          <TweetButton size={"small"} handleTweet={submitTweet} />
+        <div style={{ display: "flex" }}>
+          {content && (
+            <div style={{ alignSelf: "center", marginLeft: "15px" }}>
+              <CharactersRemaining content={content} />
+            </div>
+          )}
+          <div className="tweet-button" style={{ alignSelf: "center" }}>
+            <TweetButton size={"small"} handleTweet={submitTweet} />
+          </div>
         </div>
       </Card>
     </div>
