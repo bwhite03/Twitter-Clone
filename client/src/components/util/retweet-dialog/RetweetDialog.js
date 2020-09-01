@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
+import CharactersRemaining from "../characters-remaining/CharactersRemaining";
 import moment from "moment";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -29,6 +30,9 @@ function RetweetDialog(props) {
             value={props.content}
             inputProps={{ maxLength: 280 }}
           />
+          <div style={{ paddingTop: "5px" }}>
+            <CharactersRemaining content={props.content} />
+          </div>
           <div className="retweet">
             <div className="avatar">
               {props.tweet.profileImg ? (

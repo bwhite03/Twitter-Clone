@@ -148,6 +148,7 @@ function Tweet(props) {
         open={open}
         tweet={props.tweets}
         submitRetweet={submitRetweet}
+        content={content}
       />
     </Card>
   );
