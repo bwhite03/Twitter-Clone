@@ -12,3 +12,49 @@ body {
   min-height: 100%;
   height: 100%;
 }
+
+.darkmode {
+  background: #141d26;
+
+  .MuiFormLabel-root {
+    color: white;
+  }
+
+  .followers-container {
+    .following,
+    .followers {
+      color: gray;
+      span {
+        color: white !important;
+      }
+    }
+  }
+
+  .MuiButtonBase-root {
+    color: #ffffff;
+    .MuiSvgIcon-root {
+      color: #ffffff;
+    }
+  }
+
+  .MuiPaper-root {
+    background: #141d26;
+    color: white;
+    border-color: rgb(56, 68, 77);
+
+    .retweet-container {
+      border-color: rgb(56, 68, 77) !important;
+    }
+
+    .MuiSvgIcon-root,
+    p {
+      color: #ffffff;
+    }
+
+    .icons {
+      p {
+        color: white !important;
+      }
+    }
+  }
+}
