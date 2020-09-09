@@ -20,6 +20,16 @@ body {
     color: white;
   }
 
+  .MuiDivider-root {
+    background-color: rgb(56, 68, 77);
+  }
+
+  .MuiButtonBase-root {
+    &:hover {
+      background: #243447;
+    }
+  }
+
   .followers-container {
     .following,
     .followers {
