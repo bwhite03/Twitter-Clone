@@ -6,10 +6,9 @@ import { ListItem } from "@material-ui/core";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
-import ExploreOutlinedIcon from "@material-ui/icons/ExploreOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-import BookmarkBorderOutlinedIcon from "@material-ui/icons/BookmarkBorderOutlined";
+import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Chip from "@material-ui/core/Chip";
@@ -39,14 +38,6 @@ function Nav(props) {
               <ListItemText primary="Home" />
             </ListItem>
           </NavLink>
-          <NavLink to="/">
-            <ListItem button>
-              <ListItemIcon>
-                <ExploreOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Explore" />
-            </ListItem>
-          </NavLink>
           <NavLink to="/notifications" exact activeClassName="active-link">
             <ListItem button>
               <ListItemIcon>
@@ -68,20 +59,20 @@ function Nav(props) {
               <ListItemText primary="Messages" />
             </ListItem>
           </NavLink>
-          <NavLink to="/">
-            <ListItem button>
-              <ListItemIcon>
-                <BookmarkBorderOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Bookmarks" />
-            </ListItem>
-          </NavLink>
           <NavLink to="/profile" exact activeClassName="active-link">
             <ListItem button>
               <ListItemIcon>
                 <AccountCircleOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Profile" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/settings" exact activeClassName="active-link">
+            <ListItem button>
+              <ListItemIcon>
+                <SettingsOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
             </ListItem>
           </NavLink>
           <TweetDialog style={{ color: "red" }} />
@@ -105,14 +96,6 @@ function Nav(props) {
           <NavLink to="/signin">
             <ListItem button>
               <ListItemIcon>
-                <ExploreOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Explore" />
-            </ListItem>
-          </NavLink>
-          <NavLink to="/signin">
-            <ListItem button>
-              <ListItemIcon>
                 <NotificationsNoneOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Notifications" />
@@ -126,20 +109,20 @@ function Nav(props) {
               <ListItemText primary="Messages" />
             </ListItem>
           </NavLink>
-          <NavLink to="/signin">
-            <ListItem button>
-              <ListItemIcon>
-                <BookmarkBorderOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Bookmarks" />
-            </ListItem>
-          </NavLink>
           <NavLink to="/signin" exact activeClassName="active-link">
             <ListItem button>
               <ListItemIcon>
                 <AccountCircleOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Profile" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/signin" exact activeClassName="active-link">
+            <ListItem button>
+              <ListItemIcon>
+                <SettingsOutlinedIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
             </ListItem>
           </NavLink>
         </List>
