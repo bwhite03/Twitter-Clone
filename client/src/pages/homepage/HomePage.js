@@ -15,8 +15,6 @@ function HomePage(props) {
     props.fetchUsers();
     props.fetchTweets();
     props.fetchMessages();
-    //darkmode
-    document.querySelector("body").className = "darkmode";
   }, []);
 
   return (

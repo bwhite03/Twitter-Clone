@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import TweetDialog from "../util/tweet-dialog/TweetDialog";
 import { List } from "@material-ui/core";
 import { ListItem } from "@material-ui/core";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Darkmode from "../util/darkmode/Darkmode";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Chip from "@material-ui/core/Chip";
@@ -18,12 +18,30 @@ import { useHistory } from "react-router-dom";
 import "./nav.styles.scss";
 
 function Nav(props) {
+  const [darkmode, setDarkmode] = useState({ darkmode: false });
   const { userInfo } = props;
   const history = useHistory();
+
+  useEffect(() => {
+    localStorage.getItem("darkmode") === true &&
+      document.querySelector("body").classList.add("darkmode");
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("auth-token");
     history.push("/signin");
+  };
+
+  const handleChange = (e) => {
+    setDarkmode({ [e.target.name]: e.target.checked });
+
+    if (!darkmode.darkmode) {
+      document.querySelector("body").classList.add("darkmode");
+      localStorage.setItem("darkmode", true);
+    } else {
+      document.querySelector("body").classList.remove("darkmode");
+      localStorage.setItem("darkmode", false);
+    }
   };
 
   return (
@@ -67,15 +85,8 @@ function Nav(props) {
               <ListItemText primary="Profile" />
             </ListItem>
           </NavLink>
-          <NavLink to="/settings" exact activeClassName="active-link">
-            <ListItem button>
-              <ListItemIcon>
-                <SettingsOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItem>
-          </NavLink>
           <TweetDialog style={{ color: "red" }} />
+          <Darkmode handleChange={handleChange} darkmode={darkmode} />
           <Chip
             onClick={logout}
             label="Logout"
@@ -115,14 +126,6 @@ function Nav(props) {
                 <AccountCircleOutlinedIcon />
               </ListItemIcon>
               <ListItemText primary="Profile" />
-            </ListItem>
-          </NavLink>
-          <NavLink to="/signin" exact activeClassName="active-link">
-            <ListItem button>
-              <ListItemIcon>
-                <SettingsOutlinedIcon />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
             </ListItem>
           </NavLink>
         </List>
