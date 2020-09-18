@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import TweetDialog from "../util/tweet-dialog/TweetDialog";
 import { List } from "@material-ui/core";
@@ -15,15 +15,15 @@ import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { dark } from "../../store/actions/userActions";
 import "./nav.styles.scss";
 
 function Nav(props) {
-  const [darkmode, setDarkmode] = useState({ darkmode: false });
   const { userInfo } = props;
   const history = useHistory();
 
   useEffect(() => {
-    localStorage.getItem("darkmode") === true &&
+    localStorage.getItem("darkmode") === "dark" &&
       document.querySelector("body").classList.add("darkmode");
   }, []);
 
@@ -33,14 +33,14 @@ function Nav(props) {
   };
 
   const handleChange = (e) => {
-    setDarkmode({ [e.target.name]: e.target.checked });
+    props.dark(props.darkm);
 
-    if (!darkmode.darkmode) {
+    if (!props.darkm) {
       document.querySelector("body").classList.add("darkmode");
-      localStorage.setItem("darkmode", true);
+      localStorage.setItem("darkmode", "dark");
     } else {
       document.querySelector("body").classList.remove("darkmode");
-      localStorage.setItem("darkmode", false);
+      localStorage.setItem("darkmode", "light");
     }
   };
 
@@ -86,7 +86,7 @@ function Nav(props) {
             </ListItem>
           </NavLink>
           <TweetDialog style={{ color: "red" }} />
-          <Darkmode handleChange={handleChange} darkmode={darkmode} />
+          <Darkmode handleChange={handleChange} dark={props.darkm} />
           <Chip
             onClick={logout}
             label="Logout"
@@ -137,7 +137,8 @@ function Nav(props) {
 const mapStateToProps = (state) => {
   return {
     userInfo: state.userReducer.userInfo,
+    darkm: state.userReducer.dark,
   };
 };
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, { dark })(Nav);

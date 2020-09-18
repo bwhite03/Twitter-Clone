@@ -16,6 +16,18 @@ body {
 .darkmode {
   background: #141d26;
 
+  .MuiInputBase-input {
+    color: white !important;
+  }
+
+  .MuiTypography-root {
+    color: white;
+  }
+
+  .MuiChip-root {
+    background: #243447;
+  }
+
   .MuiFormLabel-root {
     color: white;
   }

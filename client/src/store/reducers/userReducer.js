@@ -4,10 +4,12 @@ import { UPDATE_FOLLOWING } from "../actions/userActions";
 import { UPDATE_UNFOLLOWING } from "../actions/userActions";
 import { UPDATE_PROFILE } from "../actions/userActions";
 import { CLEAR_NOTIFICATIONS } from "../actions/userActions";
+import { DARK } from "../actions/userActions";
 
 const userDefaultState = {
   userInfo: {},
   users: [],
+  dark: localStorage.getItem("darkmode") === "dark" ? true : false,
 };
 
 const userReducer = (state = userDefaultState, action) => {
@@ -74,6 +76,11 @@ const userReducer = (state = userDefaultState, action) => {
           ...state.userInfo,
           notifications: [],
         },
+      };
+    case DARK:
+      return {
+        ...state,
+        dark: !action.payload,
       };
     default:
       return state;
