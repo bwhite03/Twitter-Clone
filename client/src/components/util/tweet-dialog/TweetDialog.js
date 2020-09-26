@@ -6,6 +6,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CharactersRemaining from "../characters-remaining/CharactersRemaining";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { tweet } from "../../../store/actions/tweetActions";
 import { connect } from "react-redux";
 import "./tweet-dialog.styles.scss";
@@ -40,9 +42,22 @@ function TweetDialog(props) {
 
   return (
     <div id="form-dialog-container">
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button
+        className="tweet-dialog"
+        variant="contained"
+        color="primary"
+        onClick={handleClickOpen}
+      >
         Tweet
       </Button>
+      <ListItemIcon
+        className="mobile-tweet-dialog"
+        onClick={handleClickOpen}
+        style={{ display: "none" }}
+      >
+        <CreateOutlinedIcon />
+      </ListItemIcon>
+
       <Dialog
         open={open}
         onClose={handleClose}

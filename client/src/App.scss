@@ -16,6 +16,10 @@ body {
 .darkmode {
   background: #141d26;
 
+  .MuiListItemIcon-root {
+    color: white;
+  }
+
   .MuiInputBase-input {
     color: white !important;
   }
@@ -78,5 +82,36 @@ body {
         color: white !important;
       }
     }
+  }
+}
+
+//start mobile friendly
+@media screen and (max-width: 1200px) {
+  #nav-container {
+    .nav {
+      display: none !important;
+    }
+
+    .mobile-nav {
+      display: block !important;
+    }
+  }
+  #homepage-container {
+    grid-template-columns: 1fr 5fr 1fr !important;
+  }
+
+  .tweet-dialog {
+    display: none !important;
+  }
+
+  .mobile-tweet-dialog {
+    display: block !important;
+  }
+
+  .MuiFormControlLabel-root {
+    margin-right: 0 !important;
+  }
+  .MuiTypography-root {
+    display: none;
   }
 }

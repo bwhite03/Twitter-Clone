@@ -20,4 +20,16 @@
       color: #00acee;
     }
   }
+
+  .mobile-nav {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    .MuiListItemIcon-root {
+      padding: 10px 0;
+      justify-content: center;
+    }
+  }
 }
