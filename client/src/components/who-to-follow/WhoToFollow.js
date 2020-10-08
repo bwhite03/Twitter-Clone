@@ -41,7 +41,7 @@ function WhoToFollow(props) {
                 </Avatar>
               )}
               <div className="follow-user-info-container">
-                <p>{props.follow.username}</p>
+                <p style={{ padding: "0 5px" }}>{props.follow.username}</p>
                 <p className="at-username">{props.follow.usernameAt}</p>
               </div>
             </div>

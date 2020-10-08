@@ -10,6 +10,8 @@ import CommentPage from "./pages/commentPage/CommentPage";
 import NotificationPage from "./pages/notificationPage/NotificationPage";
 import MessagePage from "./pages/messagePage/MessagePage";
 import MessagesPage from "./pages/messagesPage/MessagesPage";
+import SideInfo from "./components/side-info/SideInfo";
+import Nav from "./components/nav/Nav";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import "./App.scss";
@@ -19,27 +21,34 @@ function Router() {
     <Provider store={store}>
       <BrowserRouter>
         <Container maxWidth="lg">
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() =>
-                localStorage.getItem("auth-token") ? (
-                  <HomePage />
-                ) : (
-                  <SignInPage />
-                )
-              }
-            />
-            <Route exact path="/profile" component={ProfilePage} />
-            <Route exact path="/signup" component={SignUpPage} />
-            <Route exact path="/signin" component={SignInPage} />
-            <Route exact path="/notifications" component={NotificationPage} />
-            <Route exact path="/messages" component={MessagePage} />
-            <Route exact path="/messages/:id" component={MessagesPage} />
-            <Route exact path="/:id" component={ProfilePages} />
-            <Route exact path="/comment/:id" component={CommentPage} />
-          </Switch>
+          <div
+            className="page-container"
+            style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr" }}
+          >
+            <Nav />
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  localStorage.getItem("auth-token") ? (
+                    <HomePage />
+                  ) : (
+                    <SignInPage />
+                  )
+                }
+              />
+              <Route exact path="/profile" component={ProfilePage} />
+              <Route exact path="/signup" component={SignUpPage} />
+              <Route exact path="/signin" component={SignInPage} />
+              <Route exact path="/notifications" component={NotificationPage} />
+              <Route exact path="/messages" component={MessagePage} />
+              <Route exact path="/messages/:id" component={MessagesPage} />
+              <Route exact path="/:id" component={ProfilePages} />
+              <Route exact path="/comment/:id" component={CommentPage} />
+            </Switch>
+            <SideInfo />
+          </div>
         </Container>
       </BrowserRouter>
     </Provider>

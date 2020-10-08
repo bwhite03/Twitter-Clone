@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import Feed from "../../components/feed/Feed";
-import Nav from "../../components/nav/Nav";
-import SideInfo from "../../components/side-info/SideInfo";
 import { connect } from "react-redux";
 import { fetchUser, fetchUsers } from "../../store/actions/userActions";
 import { fetchTweets } from "../../store/actions/tweetActions";
@@ -18,13 +16,8 @@ function HomePage(props) {
   }, []);
 
   return (
-    <div
-      id="homepage-container"
-      style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr" }}
-    >
-      <Nav />
+    <div id="homepage-container">
       <Feed />
-      <SideInfo />
     </div>
   );
 }

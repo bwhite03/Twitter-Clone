@@ -85,7 +85,6 @@ body {
   }
 }
 
-//start mobile friendly
 @media screen and (max-width: 1200px) {
   #nav-container {
     .nav {
@@ -96,7 +95,7 @@ body {
       display: block !important;
     }
   }
-  #homepage-container {
+  .page-container {
     grid-template-columns: 1fr 5fr 1fr !important;
   }
 
@@ -113,5 +112,15 @@ body {
   }
   .MuiTypography-root {
     display: none;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #side-info-container {
+    display: none;
+  }
+
+  .page-container {
+    grid-template-columns: 1fr 10fr !important;
   }
 }
