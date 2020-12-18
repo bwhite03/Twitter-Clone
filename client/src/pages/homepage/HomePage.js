@@ -7,13 +7,12 @@ import { fetchMessages } from "../../store/actions/messageActions";
 import "./homepage.styles.scss";
 
 function HomePage(props) {
-  // check if user is signed in
   useEffect(() => {
     props.fetchUser();
     props.fetchUsers();
     props.fetchTweets();
     props.fetchMessages();
-  }, []);
+  }, [props.tweets]);
 
   return (
     <div id="homepage-container">
@@ -22,7 +21,13 @@ function HomePage(props) {
   );
 }
 
-export default connect(null, {
+const mapStateToProps = (state) => {
+  return {
+    tweets: state.tweetReducer.tweets,
+  };
+};
+
+export default connect(mapStateToProps, {
   fetchUser,
   fetchUsers,
   fetchTweets,

@@ -25,7 +25,7 @@ router.post("/tweet", (req, res) => {
 
 // get all tweets
 router.get("/tweets", (req, res) => {
-  Tweet.find({}).exec((err, tweets) => {
+  Tweet.find({}).sort({dateCreated: -1}).exec((err, tweets) => {
     if (err) {
       console.log(err);
     } else {
