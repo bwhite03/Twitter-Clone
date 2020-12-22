@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Notification from "../notification/Notification";
 import Card from "@material-ui/core/Card";
-import ClearNotificationsButton from "../util/clear-notifications-button/ClearNotificationsButton";
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import Tooltip from "@material-ui/core/Tooltip";
 import { connect } from "react-redux";
 import { clearNotifications } from "../../store/actions/userActions";
 import "./notification-list.styles.scss";
@@ -24,9 +25,11 @@ function NotificationList(props) {
           <Link to="/">
             <i className="fas fa-arrow-left"></i>
           </Link>
-          <h1 style={{ alignSelf: "center" }}>Notifications</h1>
-          <div style={{ marginLeft: "auto" }}>
-            <ClearNotificationsButton clearNotifications={clearNotifications} />
+          <h1 style={{ alignSelf: "center" }}>Notifications</h1>      
+          <div className="icon" onClick={clearNotifications} style={{ marginLeft: "auto" }}>
+            <Tooltip title="Clear Notifications">
+              <DeleteForeverOutlinedIcon />
+            </Tooltip>
           </div>
         </div>
         {props.userInfo.notifications.map((notification, index) => (

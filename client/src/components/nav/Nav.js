@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import TweetDialog from "../util/tweet-dialog/TweetDialog";
+import SettingsDialog from "../util/settings-dialog/SettingsDialog";
 import { List } from "@material-ui/core";
 import { ListItem } from "@material-ui/core";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Darkmode from "../util/darkmode/Darkmode";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import NotificationsNoneOutlinedIcon from "@material-ui/icons/NotificationsNoneOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
@@ -15,7 +15,6 @@ import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { dark } from "../../store/actions/userActions";
 import "./nav.styles.scss";
 
 function Nav(props) {
@@ -32,17 +31,7 @@ function Nav(props) {
     history.push("/signin");
   };
 
-  const handleChange = (e) => {
-    props.dark(props.darkm);
-
-    if (!props.darkm) {
-      document.querySelector("body").classList.add("darkmode");
-      localStorage.setItem("darkmode", "dark");
-    } else {
-      document.querySelector("body").classList.remove("darkmode");
-      localStorage.setItem("darkmode", "light");
-    }
-  };
+  
 
   return (
     <nav id="nav-container">
@@ -87,7 +76,7 @@ function Nav(props) {
               </ListItem>
             </NavLink>
             <TweetDialog />
-            <Darkmode handleChange={handleChange} dark={props.darkm} />
+            <SettingsDialog />
             <Chip
               onClick={logout}
               label="Logout"
@@ -122,7 +111,6 @@ function Nav(props) {
               </ListItemIcon>
             </NavLink>
             <TweetDialog />
-            <Darkmode handleChange={handleChange} dark={props.darkm} />
             <Chip
               onClick={logout}
               label="Logout"
@@ -174,8 +162,7 @@ function Nav(props) {
 const mapStateToProps = (state) => {
   return {
     userInfo: state.userReducer.userInfo,
-    darkm: state.userReducer.dark,
   };
 };
 
-export default connect(mapStateToProps, { dark })(Nav);
+export default connect(mapStateToProps)(Nav);

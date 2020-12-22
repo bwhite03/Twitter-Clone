@@ -16,6 +16,12 @@ body {
 .darkmode {
   background: #141d26;
 
+  #settings-dialog-container {
+    .icon {
+      color: white;
+    }
+  }
+
   .MuiListItemIcon-root {
     color: white;
   }

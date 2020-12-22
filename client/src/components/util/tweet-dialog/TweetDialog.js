@@ -57,7 +57,6 @@ function TweetDialog(props) {
       >
         <CreateOutlinedIcon />
       </ListItemIcon>
-
       <Dialog
         open={open}
         onClose={handleClose}
