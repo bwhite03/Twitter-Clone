@@ -37,7 +37,7 @@ function SettingsDialog(props) {
 
   return (
     <div id="settings-dialog-container">
-      <div className="icon" onClick={handleClickOpen}>
+      <div className="settings-icon" onClick={handleClickOpen}>
         <Tooltip title="Settings">
           <SettingsOutlinedIcon />
         </Tooltip>

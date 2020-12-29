@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { fetchUser, fetchUsers } from "../../store/actions/userActions";
 import { fetchTweets } from "../../store/actions/tweetActions";
 import { fetchMessages } from "../../store/actions/messageActions";
+import SideInfo from "../../components/side-info/SideInfo";
+import Nav from "../../components/nav/Nav";
 import "./homepage.styles.scss";
 
 function HomePage(props) {
@@ -15,8 +17,10 @@ function HomePage(props) {
   }, [props.tweets]);
 
   return (
-    <div id="homepage-container">
+    <div id="homepage-container" style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr" }}>
+      <Nav />
       <Feed />
+      <SideInfo />
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Card from "@material-ui/core/Card";
 import WhoToFollow from "../who-to-follow/WhoToFollow";
 import { connect } from "react-redux";
+import './profile-following-list.styles.scss';
 
 function ProfileFollowingList(props) {
   const filteredUsers = props.users.filter((user) => {

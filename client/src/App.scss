@@ -17,7 +17,7 @@ body {
   background: #141d26;
 
   #settings-dialog-container {
-    .icon {
+    .settings-icon {
       color: white;
     }
   }
@@ -99,9 +99,17 @@ body {
 
     .mobile-nav {
       display: block !important;
+
+      #settings-dialog-container {
+        padding: 10px 0;
+      }
     }
   }
-  .page-container {
+  #homepage-container,
+  #commentpage-container,
+  #message-page-container,
+  #notification-page-container,
+  #profilepage-container {
     grid-template-columns: 1fr 5fr 1fr !important;
   }
 
@@ -111,13 +119,11 @@ body {
 
   .mobile-tweet-dialog {
     display: block !important;
+    cursor: pointer;
   }
 
   .MuiFormControlLabel-root {
     margin-right: 0 !important;
-  }
-  .MuiTypography-root {
-    display: none;
   }
 }
 
@@ -126,7 +132,11 @@ body {
     display: none;
   }
 
-  .page-container {
+  #homepage-container,
+  #commentpage-container,
+  #message-page-container,
+  #notification-page-container,
+  #profilepage-container {
     grid-template-columns: 1fr 10fr !important;
   }
 }

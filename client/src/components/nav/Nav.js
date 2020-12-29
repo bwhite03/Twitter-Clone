@@ -111,6 +111,7 @@ function Nav(props) {
               </ListItemIcon>
             </NavLink>
             <TweetDialog />
+            <SettingsDialog />
             <Chip
               onClick={logout}
               label="Logout"
