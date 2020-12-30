@@ -1,4 +1,7 @@
 #profile-info-container {
+  height: 100vh;
+  overflow-y: auto;
+
   .profile-info-nav {
     display: flex;
     padding: 10px;
