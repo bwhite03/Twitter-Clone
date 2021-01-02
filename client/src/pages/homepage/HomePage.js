@@ -9,6 +9,24 @@ import Nav from "../../components/nav/Nav";
 import "./homepage.styles.scss";
 
 function HomePage(props) {
+  //font size settings
+  if (props.font === "default") {
+    document.querySelector("body").classList.add("default");
+    document.querySelector("body").classList.remove("large");
+    document.querySelector("body").classList.remove("small");
+    localStorage.setItem("fontsize", "default");
+  } else if (props.font === "small") {
+    document.querySelector("body").classList.remove("default");
+    document.querySelector("body").classList.remove("large");
+    document.querySelector("body").classList.add("small");
+    localStorage.setItem("fontsize", "small");
+  } else {
+    document.querySelector("body").classList.remove("default");
+    document.querySelector("body").classList.remove("small");
+    document.querySelector("body").classList.add("large");
+    localStorage.setItem("fontsize", "large");
+  }
+
   useEffect(() => {
     props.fetchUser();
     props.fetchUsers();
@@ -17,7 +35,10 @@ function HomePage(props) {
   }, [props.tweets]);
 
   return (
-    <div id="homepage-container" style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr" }}>
+    <div
+      id="homepage-container"
+      style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr" }}
+    >
       <Nav />
       <Feed />
       <SideInfo />
@@ -28,6 +49,7 @@ function HomePage(props) {
 const mapStateToProps = (state) => {
   return {
     tweets: state.tweetReducer.tweets,
+    font: state.userReducer.font,
   };
 };
 

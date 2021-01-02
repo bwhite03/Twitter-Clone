@@ -1,29 +1,41 @@
-import React, { useState } from "react";
-import Slider from "@material-ui/core/Slider";
+import React from "react";
+import { connect } from "react-redux";
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormLabel from "@material-ui/core/FormLabel";
+import { fontSize } from "../../../store/actions/userActions";
 
-function FontSize() {
-  const [fontSize, setFontSize] = useState(16);
-
-  const handleChange = (e, value) => {
-    setFontSize(value);
-    document.querySelector("body").style.fontSize = `${fontSize}px`;
-  };
-
+function FontSize(props) {
   return (
-    <div>
-      <Slider
-        defaultValue={16}
-        value={fontSize}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={6}
-        marks
-        min={10}
-        max={23}
-        onChange={handleChange}
-      />
+    <div style={{ paddingTop: "10px" }}>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Font Size</FormLabel>
+        <RadioGroup
+          aria-label="fontsize"
+          name="fontsize"
+          value={props.font}
+          onChange={props.fontSize}
+          row
+        >
+          <FormControlLabel value="small" control={<Radio />} label="Small" />
+          <FormControlLabel
+            value="default"
+            control={<Radio />}
+            label="Default"
+          />
+          <FormControlLabel value="large" control={<Radio />} label="Large" />
+        </RadioGroup>
+      </FormControl>
     </div>
   );
 }
 
-export default FontSize;
+const mapStateToProps = (state) => {
+  return {
+    font: state.userReducer.font,
+  };
+};
+
+export default connect(mapStateToProps, { fontSize })(FontSize);

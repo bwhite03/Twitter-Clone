@@ -6,6 +6,7 @@ export const UPDATE_UNFOLLOWING = "UPDATE_UNFOLLOWING";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const CLEAR_NOTIFICATIONS = "CLEAR_NOTIFICATIONS";
 export const DARK = "DARK";
+export const FONT_SIZE = "FONT_SIZE";
 
 export const fetchUser = () => {
   const token = localStorage.getItem("auth-token");
@@ -119,4 +120,9 @@ export const clearNotifications = (data) => {
 export const dark = (data) => ({
   type: DARK,
   payload: data,
+});
+
+export const fontSize = (e) => ({
+  type: FONT_SIZE,
+  payload: e.target.value,
 });

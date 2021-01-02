@@ -5,11 +5,13 @@ import { UPDATE_UNFOLLOWING } from "../actions/userActions";
 import { UPDATE_PROFILE } from "../actions/userActions";
 import { CLEAR_NOTIFICATIONS } from "../actions/userActions";
 import { DARK } from "../actions/userActions";
+import { FONT_SIZE } from "../actions/userActions";
 
 const userDefaultState = {
   userInfo: {},
   users: [],
   dark: localStorage.getItem("darkmode") === "dark" ? true : false,
+  font: localStorage.getItem("fontsize"),
 };
 
 const userReducer = (state = userDefaultState, action) => {
@@ -81,6 +83,11 @@ const userReducer = (state = userDefaultState, action) => {
       return {
         ...state,
         dark: !action.payload,
+      };
+    case FONT_SIZE:
+      return {
+        ...state,
+        font: action.payload,
       };
     default:
       return state;

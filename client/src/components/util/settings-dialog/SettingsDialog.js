@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -9,7 +8,6 @@ import Tooltip from "@material-ui/core/Tooltip";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import Darkmode from "../darkmode/Darkmode";
 import FontSize from "../font-size/FontSize";
-import { dark } from "../../../store/actions/userActions";
 import "./settings-dialog.styles.scss";
 
 function SettingsDialog(props) {
@@ -21,18 +19,6 @@ function SettingsDialog(props) {
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleChange = (e) => {
-    props.dark(props.darkm);
-
-    if (!props.darkm) {
-      document.querySelector("body").classList.add("darkmode");
-      localStorage.setItem("darkmode", "dark");
-    } else {
-      document.querySelector("body").classList.remove("darkmode");
-      localStorage.setItem("darkmode", "light");
-    }
   };
 
   return (
@@ -50,7 +36,7 @@ function SettingsDialog(props) {
       >
         <DialogTitle id="settings-dialog-title">Settings</DialogTitle>
         <DialogContent>
-          <Darkmode handleChange={handleChange} dark={props.darkm} />
+          <Darkmode />
           <FontSize />
         </DialogContent>
         <DialogActions>
@@ -61,10 +47,4 @@ function SettingsDialog(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    darkm: state.userReducer.dark,
-  };
-};
-
-export default connect(mapStateToProps, { dark })(SettingsDialog);
+export default SettingsDialog;
