@@ -9,30 +9,12 @@ import Nav from "../../components/nav/Nav";
 import "./homepage.styles.scss";
 
 function HomePage(props) {
-  //font size settings
-  if (props.font === "default") {
-    document.querySelector("body").classList.add("default");
-    document.querySelector("body").classList.remove("large");
-    document.querySelector("body").classList.remove("small");
-    localStorage.setItem("fontsize", "default");
-  } else if (props.font === "small") {
-    document.querySelector("body").classList.remove("default");
-    document.querySelector("body").classList.remove("large");
-    document.querySelector("body").classList.add("small");
-    localStorage.setItem("fontsize", "small");
-  } else {
-    document.querySelector("body").classList.remove("default");
-    document.querySelector("body").classList.remove("small");
-    document.querySelector("body").classList.add("large");
-    localStorage.setItem("fontsize", "large");
-  }
-
   useEffect(() => {
     props.fetchUser();
     props.fetchUsers();
     props.fetchTweets();
     props.fetchMessages();
-  }, [props.tweets]);
+  }, [props.tweets.length]);
 
   return (
     <div

@@ -8,6 +8,15 @@ import FormLabel from "@material-ui/core/FormLabel";
 import { fontSize } from "../../../store/actions/userActions";
 
 function FontSize(props) {
+  //font size settings
+  if (props.font === "default") {
+    localStorage.setItem("fontsize", "default");
+  } else if (props.font === "small") {
+    localStorage.setItem("fontsize", "small");
+  } else {
+    localStorage.setItem("fontsize", "large");
+  }
+
   return (
     <div style={{ paddingTop: "10px" }}>
       <FormControl component="fieldset">
