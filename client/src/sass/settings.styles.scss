@@ -1,18 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
-}
-
-html,
-body {
-  min-height: 100%;
-  height: 100%;
-}
-
 .darkmode {
   background: #141d26;
 
@@ -101,54 +86,4 @@ body {
 
 .large {
   font-size: 22px;
-}
-
-@media screen and (max-width: 1200px) {
-  #nav-container {
-    .nav {
-      display: none !important;
-    }
-
-    .mobile-nav {
-      display: block !important;
-
-      #settings-dialog-container {
-        padding: 10px 0;
-      }
-    }
-  }
-  #homepage-container,
-  #commentpage-container,
-  #message-page-container,
-  #notification-page-container,
-  #profilepage-container {
-    grid-template-columns: 1fr 5fr 1fr !important;
-  }
-
-  .tweet-dialog {
-    display: none !important;
-  }
-
-  .mobile-tweet-dialog {
-    display: block !important;
-    cursor: pointer;
-  }
-
-  .MuiFormControlLabel-root {
-    margin-right: 0 !important;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  #side-info-container {
-    display: none;
-  }
-
-  #homepage-container,
-  #commentpage-container,
-  #message-page-container,
-  #notification-page-container,
-  #profilepage-container {
-    grid-template-columns: 1fr 10fr !important;
-  }
 }

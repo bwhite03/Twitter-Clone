@@ -11,7 +11,7 @@ import CommentPage from "./pages/commentPage/CommentPage";
 import NotificationPage from "./pages/notificationPage/NotificationPage";
 import MessagePage from "./pages/messagePage/MessagePage";
 import MessagesPage from "./pages/messagesPage/MessagesPage";
-import "./App.scss";
+import "../src/sass/App.scss";
 
 function Router({ font }) {
   return (
