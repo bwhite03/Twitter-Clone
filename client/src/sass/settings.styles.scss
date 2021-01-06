@@ -87,3 +87,31 @@
 .large {
   font-size: 22px;
 }
+
+.blue {
+}
+
+.red {
+  .MuiButton-containedPrimary {
+    background: red !important;
+    color: white;
+  }
+  .MuiButton-root,
+  MuiButton-label {
+    background: red;
+    color: white;
+  }
+
+  .MuiButton-label {
+    color: white;
+  }
+}
+
+.purple {
+}
+
+.orange {
+}
+
+.green {
+}

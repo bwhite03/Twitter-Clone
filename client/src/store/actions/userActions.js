@@ -7,6 +7,7 @@ export const UPDATE_PROFILE = "UPDATE_PROFILE";
 export const CLEAR_NOTIFICATIONS = "CLEAR_NOTIFICATIONS";
 export const DARK = "DARK";
 export const FONT_SIZE = "FONT_SIZE";
+export const COLOR_PICKER = "COLOR_PICKER";
 
 export const fetchUser = () => {
   const token = localStorage.getItem("auth-token");
@@ -124,5 +125,10 @@ export const dark = (data) => ({
 
 export const fontSize = (e) => ({
   type: FONT_SIZE,
+  payload: e.target.value,
+});
+
+export const colorPicker = (e) => ({
+  type: COLOR_PICKER,
   payload: e.target.value,
 });

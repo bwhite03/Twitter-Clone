@@ -6,12 +6,14 @@ import { UPDATE_PROFILE } from "../actions/userActions";
 import { CLEAR_NOTIFICATIONS } from "../actions/userActions";
 import { DARK } from "../actions/userActions";
 import { FONT_SIZE } from "../actions/userActions";
+import { COLOR_PICKER } from "../actions/userActions";
 
 const userDefaultState = {
   userInfo: {},
   users: [],
   dark: localStorage.getItem("darkmode") === "dark" ? true : false,
   font: localStorage.getItem("fontsize"),
+  color: localStorage.getItem("color"),
 };
 
 const userReducer = (state = userDefaultState, action) => {
@@ -88,6 +90,11 @@ const userReducer = (state = userDefaultState, action) => {
       return {
         ...state,
         font: action.payload,
+      };
+    case COLOR_PICKER:
+      return {
+        ...state,
+        color: action.payload,
       };
     default:
       return state;

@@ -8,6 +8,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
 import Darkmode from "../darkmode/Darkmode";
 import FontSize from "../font-size/FontSize";
+import ColorPicker from "../color-picker/ColorPicker";
 import "./settings-dialog.styles.scss";
 
 function SettingsDialog(props) {
@@ -38,6 +39,7 @@ function SettingsDialog(props) {
         <DialogContent>
           <Darkmode />
           <FontSize />
+          <ColorPicker />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Close</Button>

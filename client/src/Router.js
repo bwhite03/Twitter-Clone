@@ -13,10 +13,10 @@ import MessagePage from "./pages/messagePage/MessagePage";
 import MessagesPage from "./pages/messagesPage/MessagesPage";
 import "../src/sass/App.scss";
 
-function Router({ font }) {
+function Router({ font, color }) {
   return (
     <BrowserRouter>
-      <Container maxWidth="lg" className={font}>
+      <Container maxWidth="lg" className={`${font} ${color}`}>
         <Switch>
           <Route
             exact
@@ -42,6 +42,7 @@ function Router({ font }) {
 const mapStateToProps = (state) => {
   return {
     font: state.userReducer.font,
+    color: state.userReducer.color,
   };
 };
 
