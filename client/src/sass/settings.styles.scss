@@ -77,41 +77,246 @@
 }
 
 .small {
-  font-size: 10px;
+  font-size: 12px;
+
+  .MuiListItemText-root {
+    .MuiTypography-body1 {
+      font-size: 12px;
+    }
+  }
 }
 
 .default {
   font-size: 16px;
+
+  .MuiListItemText-root {
+    .MuiTypography-body1 {
+      font-size: 16px;
+    }
+  }
 }
 
 .large {
-  font-size: 22px;
+  font-size: 20px;
+
+  .MuiListItemText-root {
+    .MuiTypography-body1 {
+      font-size: 20px;
+    }
+  }
 }
 
 .blue {
+  .fa-arrow-left {
+    color: #00acee !important;
+  }
+
+  #messages-container .sender-message-container .sender-message p {
+    background: #00acee;
+  }
+
+  .MuiButton-root {
+    background: #00acee !important;
+
+    .MuiButton-label {
+      color: white;
+    }
+  }
+
+  #follow-button,
+  #unfollow-button {
+    .MuiButtonBase-root {
+      border-color: #00acee;
+      background: transparent !important;
+
+      .MuiButton-label {
+        color: #00acee;
+      }
+    }
+  }
+
+  #nav-container {
+    .active-link {
+      color: #00acee;
+      .MuiSvgIcon-root,
+      .MuiListItemText-root {
+        color: #00acee;
+      }
+    }
+    .MuiBadge-colorPrimary {
+      background: #00acee;
+    }
+  }
 }
 
 .red {
-  .MuiButton-containedPrimary {
-    background: red !important;
-    color: white;
-  }
-  .MuiButton-root,
-  MuiButton-label {
-    background: red;
-    color: white;
+  .fa-arrow-left {
+    color: #e0245e !important;
   }
 
-  .MuiButton-label {
-    color: white;
+  #messages-container .sender-message-container .sender-message p {
+    background: #e0245e;
+  }
+
+  .MuiButton-root {
+    background: #e0245e !important;
+
+    .MuiButton-label {
+      color: white;
+    }
+  }
+
+  #follow-button,
+  #unfollow-button {
+    .MuiButtonBase-root {
+      border-color: #e0245e;
+      background: transparent !important;
+
+      .MuiButton-label {
+        color: #e0245e;
+      }
+    }
+  }
+
+  #nav-container {
+    .active-link {
+      color: #e0245e;
+      .MuiSvgIcon-root,
+      .MuiListItemText-root {
+        color: #e0245e;
+      }
+    }
+    .MuiBadge-colorPrimary {
+      background: #e0245e;
+    }
   }
 }
 
 .purple {
+  .fa-arrow-left {
+    color: #794bc4 !important;
+  }
+
+  #messages-container .sender-message-container .sender-message p {
+    background: #794bc4;
+  }
+
+  .MuiButton-root {
+    background: #794bc4 !important;
+
+    .MuiButton-label {
+      color: white;
+    }
+  }
+
+  #follow-button,
+  #unfollow-button {
+    .MuiButtonBase-root {
+      border-color: #794bc4;
+      background: transparent !important;
+
+      .MuiButton-label {
+        color: #794bc4;
+      }
+    }
+  }
+
+  #nav-container {
+    .active-link {
+      color: #794bc4;
+      .MuiSvgIcon-root,
+      .MuiListItemText-root {
+        color: #794bc4;
+      }
+    }
+    .MuiBadge-colorPrimary {
+      background: #794bc4;
+    }
+  }
 }
 
 .orange {
+  .fa-arrow-left {
+    color: #f45d22 !important;
+  }
+
+  #messages-container .sender-message-container .sender-message p {
+    background: #f45d22;
+  }
+
+  .MuiButton-root {
+    background: #f45d22 !important;
+
+    .MuiButton-label {
+      color: white;
+    }
+  }
+
+  #follow-button,
+  #unfollow-button {
+    .MuiButtonBase-root {
+      border-color: #f45d22;
+      background: transparent !important;
+
+      .MuiButton-label {
+        color: #f45d22;
+      }
+    }
+  }
+
+  #nav-container {
+    .active-link {
+      color: #f45d22;
+      .MuiSvgIcon-root,
+      .MuiListItemText-root {
+        color: #f45d22;
+      }
+    }
+    .MuiBadge-colorPrimary {
+      background: #f45d22;
+    }
+  }
 }
 
 .green {
+  .fa-arrow-left {
+    color: #17bf63 !important;
+  }
+
+  #messages-container .sender-message-container .sender-message p {
+    background: #17bf63;
+  }
+
+  .MuiButton-root {
+    background: #17bf63 !important;
+
+    .MuiButton-label {
+      color: white;
+    }
+  }
+
+  #follow-button,
+  #unfollow-button {
+    .MuiButtonBase-root {
+      border-color: #17bf63;
+      background: transparent !important;
+
+      .MuiButton-label {
+        color: #17bf63;
+      }
+    }
+  }
+
+  #nav-container {
+    .active-link {
+      color: #17bf63;
+      .MuiSvgIcon-root,
+      .MuiListItemText-root {
+        color: #17bf63;
+      }
+    }
+    .MuiBadge-colorPrimary {
+      background: #17bf63;
+    }
+  }
 }
