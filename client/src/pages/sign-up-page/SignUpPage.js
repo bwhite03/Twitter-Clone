@@ -9,12 +9,13 @@ function SignUpPage(props) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (email === "" || username === "" || password === "") {
-      console.log("Error inputs empty");
+      setErrorMsg("Error inputs empty");
     } else {
       axios
         .post("/signup", {
@@ -23,38 +24,46 @@ function SignUpPage(props) {
           password: password,
         })
         .then(function (response) {
+          props.history.push("/");
           console.log(response);
         })
         .catch(function (error) {
-          console.log(error);
+          setErrorMsg(error.response.data);
         });
-      props.history.push("/");
     }
   };
+
+  console.log(errorMsg);
 
   return (
     <div id="sign-up-page-container">
       <form onSubmit={handleSubmit}>
         <h1>Sign Up to Twitter</h1>
         <TextField
+          error={errorMsg}
           id="outlined-basic"
           label="Email"
           fullWidth
           margin="normal"
+          helperText={errorMsg}
           onChange={(e) => setEmail(e.target.value)}
         />
         <TextField
+          error={errorMsg}
           id="outlined-basic"
           label="Username"
           fullWidth
           margin="normal"
+          helperText={errorMsg}
           onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
+          error={errorMsg}
           id="outlined-basic"
           label="Password"
           fullWidth
           margin="normal"
+          helperText={errorMsg}
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button variant="contained" color="primary" size="large" type="submit">
