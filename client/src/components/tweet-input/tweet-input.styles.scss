@@ -1,5 +1,8 @@
 #tweet-input-container {
-  // border: 1px solid rgb(230, 236, 240);
+  .MuiSvgIcon-root {
+    cursor: pointer;
+    margin-top: 5px;
+  }
 
   h1 {
     text-align: left;

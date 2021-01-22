@@ -4,16 +4,23 @@ import TextField from "@material-ui/core/TextField";
 import TweetButton from "../util/tweet-button/TweetButton";
 import Card from "@material-ui/core/Card";
 import CharactersRemaining from "../util/characters-remaining/CharactersRemaining";
+import InsertEmoticonOutlinedIcon from "@material-ui/icons/InsertEmoticonOutlined";
+import EmjoiPicker from "../util/emoji-picker/EmjoiPicker";
 import { connect } from "react-redux";
 import { tweet } from "../../store/actions/tweetActions";
 import "./tweet-input.styles.scss";
 
 function TweetInput(props) {
   const [content, setContent] = useState("");
+  const [open, setOpen] = useState(false);
 
   const submitTweet = () => {
     props.tweet(data);
     setContent("");
+  };
+
+  const openEmjoi = () => {
+    setOpen(!open);
   };
 
   const data = {
@@ -55,6 +62,8 @@ function TweetInput(props) {
               value={content}
               inputProps={{ maxLength: 280 }}
             />
+            <InsertEmoticonOutlinedIcon onClick={openEmjoi} />
+            {open && <EmjoiPicker content={content} setContent={setContent} />}
           </form>
         </div>
         <div style={{ display: "flex" }}>

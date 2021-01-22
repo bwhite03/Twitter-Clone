@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import CommentHeader from "../comment-header/CommentHeader";
 import CommentList from "../comment-list/CommentList";
-import "./tweet-feed.styles.scss";
 
 function TweetFeed(props) {
   // get current tweet params
