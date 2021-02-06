@@ -5,6 +5,7 @@ export const COMMENT = "COMMENT";
 export const UPDATE_LIKES = "UPDATELIKES";
 export const UPDATE_UNLIKES = "UPDATEUNLIKES";
 export const UPDATE_RETWEETS = "UPDATE_RETWEETS";
+export const DELETE_TWEET = "DELETE_TWEET";
 
 // post tweet
 export const tweet = (data) => {
@@ -119,6 +120,23 @@ export const updateRetweet = (id) => {
       .then(() => {
         dispatch({
           type: UPDATE_RETWEETS,
+          payload: id,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+// delete tweet
+export const deleteTweet = (id) => {
+  return (dispatch) => {
+    axios
+      .delete(`/deletetweet/${id}`, {})
+      .then(() => {
+        dispatch({
+          type: DELETE_TWEET,
           payload: id,
         });
       })

@@ -4,6 +4,7 @@ import { COMMENT } from "../actions/tweetActions";
 import { UPDATE_LIKES } from "../actions/tweetActions";
 import { UPDATE_UNLIKES } from "../actions/tweetActions";
 import { UPDATE_RETWEETS } from "../actions/tweetActions";
+import { DELETE_TWEET } from "../actions/tweetActions";
 
 const userDefaultState = {
   tweets: [],
@@ -55,6 +56,11 @@ const tweetReducer = (state = userDefaultState, action) => {
             ? { ...tweet, retweets: [...tweet.retweets, action.payload.userId] }
             : tweet
         ),
+      };
+    case DELETE_TWEET:
+      return {
+        ...state,
+        tweets: state.tweets.filter((tweet) => tweet._id !== action.payload),
       };
     default:
       return state;

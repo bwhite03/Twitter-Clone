@@ -25,13 +25,15 @@ router.post("/tweet", (req, res) => {
 
 // get all tweets
 router.get("/tweets", (req, res) => {
-  Tweet.find({}).sort({dateCreated: -1}).exec((err, tweets) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(tweets);
-    }
-  });
+  Tweet.find({})
+    .sort({ dateCreated: -1 })
+    .exec((err, tweets) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.json(tweets);
+      }
+    });
 });
 
 // add comments to tweet
@@ -98,6 +100,16 @@ router.put("/updateretweet/:id", (req, res) => {
   Tweet.findOneAndUpdate(
     { _id: req.params.id },
     { $push: { retweets: req.body.user } },
+    { new: true, runValidators: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+  res.end();
+});
+
+router.delete("/deletetweet/:id", (req, res) => {
+  Tweet.deleteOne(
+    { _id: req.params.id },
     { new: true, runValidators: true }
   ).catch((err) => {
     console.error(err);
