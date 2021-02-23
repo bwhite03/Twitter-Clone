@@ -12,7 +12,7 @@ import "./tweet-input.styles.scss";
 
 function TweetInput(props) {
   const [content, setContent] = useState("");
-  const [open, setOpen] = useState(false);
+  const [emjoiOpen, setEmjoiOpen] = useState(false);
 
   const submitTweet = () => {
     props.tweet(data);
@@ -20,7 +20,7 @@ function TweetInput(props) {
   };
 
   const openEmjoi = () => {
-    setOpen(!open);
+    setEmjoiOpen(!emjoiOpen);
   };
 
   const data = {
@@ -63,7 +63,9 @@ function TweetInput(props) {
               inputProps={{ maxLength: 280 }}
             />
             <InsertEmoticonOutlinedIcon onClick={openEmjoi} />
-            {open && <EmjoiPicker content={content} setContent={setContent} />}
+            {emjoiOpen && (
+              <EmjoiPicker content={content} setContent={setContent} />
+            )}
           </form>
         </div>
         <div style={{ display: "flex" }}>

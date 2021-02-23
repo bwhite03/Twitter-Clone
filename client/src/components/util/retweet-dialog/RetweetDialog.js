@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { Avatar } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
@@ -8,9 +8,17 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import EmjoiPicker from "../emoji-picker/EmjoiPicker";
+import InsertEmoticonOutlinedIcon from "@material-ui/icons/InsertEmoticonOutlined";
 import "./retweet.styles.scss";
 
 function RetweetDialog(props) {
+  const [emjoiOpen, setEmjoiOpen] = useState(false);
+
+  const openEmjoi = () => {
+    setEmjoiOpen(!emjoiOpen);
+  };
+
   return (
     <div id="form-dialog-container">
       <Dialog
@@ -30,6 +38,16 @@ function RetweetDialog(props) {
             value={props.content}
             inputProps={{ maxLength: 280 }}
           />
+          <InsertEmoticonOutlinedIcon
+            onClick={openEmjoi}
+            style={{ cursor: "pointer", marginTop: "5px" }}
+          />
+          {emjoiOpen && (
+            <EmjoiPicker
+              content={props.content}
+              setContent={props.setContent}
+            />
+          )}
           <div style={{ paddingTop: "5px" }}>
             <CharactersRemaining content={props.content} />
           </div>

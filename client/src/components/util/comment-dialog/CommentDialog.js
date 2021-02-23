@@ -6,6 +6,8 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import CharactersRemaining from "../characters-remaining/CharactersRemaining";
+import EmjoiPicker from "../emoji-picker/EmjoiPicker";
+import InsertEmoticonOutlinedIcon from "@material-ui/icons/InsertEmoticonOutlined";
 import { comment } from "../../../store/actions/tweetActions";
 import { connect } from "react-redux";
 import "./comment-dialog.styles.scss";
@@ -13,6 +15,7 @@ import "./comment-dialog.styles.scss";
 function CommentDialog(props) {
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState("");
+  const [emjoiOpen, setEmjoiOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,6 +23,10 @@ function CommentDialog(props) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const openEmjoi = () => {
+    setEmjoiOpen(!emjoiOpen);
   };
 
   const submitComment = () => {
@@ -67,6 +74,13 @@ function CommentDialog(props) {
             value={content}
             inputProps={{ maxLength: 280 }}
           />
+          <InsertEmoticonOutlinedIcon
+            onClick={openEmjoi}
+            style={{ cursor: "pointer", marginTop: "5px" }}
+          />
+          {emjoiOpen && (
+            <EmjoiPicker content={content} setContent={setContent} />
+          )}
           <div style={{ paddingTop: "5px" }}>
             <CharactersRemaining content={content} />
           </div>

@@ -8,6 +8,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import CharactersRemaining from "../characters-remaining/CharactersRemaining";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import EmjoiPicker from "../emoji-picker/EmjoiPicker";
+import InsertEmoticonOutlinedIcon from "@material-ui/icons/InsertEmoticonOutlined";
 import { tweet } from "../../../store/actions/tweetActions";
 import { connect } from "react-redux";
 import "./tweet-dialog.styles.scss";
@@ -15,6 +17,7 @@ import "./tweet-dialog.styles.scss";
 function TweetDialog(props) {
   const [open, setOpen] = useState(false);
   const [content, setContent] = useState("");
+  const [emjoiOpen, setEmjoiOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -22,6 +25,10 @@ function TweetDialog(props) {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const openEmjoi = () => {
+    setEmjoiOpen(!emjoiOpen);
   };
 
   const data = {
@@ -74,6 +81,13 @@ function TweetDialog(props) {
             value={content}
             inputProps={{ maxLength: 280 }}
           />
+          <InsertEmoticonOutlinedIcon
+            onClick={openEmjoi}
+            style={{ cursor: "pointer", marginTop: "5px" }}
+          />
+          {emjoiOpen && (
+            <EmjoiPicker content={content} setContent={setContent} />
+          )}
           <div style={{ paddingTop: "5px" }}>
             <CharactersRemaining content={content} />
           </div>
