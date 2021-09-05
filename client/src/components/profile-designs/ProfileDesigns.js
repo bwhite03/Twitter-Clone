@@ -5,7 +5,12 @@ import "./profile-designs.styles.scss";
 function ProfileDesigns(props) {
   return (
     <div id="profile-design-container">
-      <div className="profile-info-design">
+      <div
+        className="profile-info-design"
+        style={{
+          backgroundImage: "url(" + props.currentUser.profileBackground + ")",
+        }}
+      >
         {props.currentUser.profileImg ? (
           <Avatar
             src={props.currentUser.profileImg}

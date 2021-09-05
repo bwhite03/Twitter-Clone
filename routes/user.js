@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/users.model");
+const Tweet = require("../models/tweet.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { registerValidation, signinValidation } = require("../validation");
@@ -156,6 +157,19 @@ router.put("/updateprofile/:id", (req, res) => {
   ).catch((err) => {
     console.error(err);
   });
+
+  Tweet.updateMany(
+    { userid: req.params.id },
+    {
+      $set: {
+        profileImg: req.body.profileImg,
+      },
+    },
+    { new: true, runValidators: true, multi: true }
+  ).catch((err) => {
+    console.error(err);
+  });
+
   res.end();
 });
 

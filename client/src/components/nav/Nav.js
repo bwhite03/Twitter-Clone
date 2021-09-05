@@ -13,6 +13,7 @@ import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined"
 import ExitToAppOutlinedIcon from "@material-ui/icons/ExitToAppOutlined";
 import Chip from "@material-ui/core/Chip";
 import Badge from "@material-ui/core/Badge";
+import Tooltip from "@material-ui/core/Tooltip";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "./nav.styles.scss";
@@ -30,8 +31,6 @@ function Nav(props) {
     localStorage.removeItem("auth-token");
     history.push("/signin");
   };
-
-  
 
   return (
     <nav id="nav-container">
@@ -112,12 +111,9 @@ function Nav(props) {
             </NavLink>
             <TweetDialog />
             <SettingsDialog />
-            <Chip
-              onClick={logout}
-              label="Logout"
-              icon={<ExitToAppOutlinedIcon />}
-              style={{ marginTop: "20px" }}
-            />
+            <Tooltip title="Logout" style={{ cursor: "pointer" }}>
+              <ExitToAppOutlinedIcon onClick={logout} />
+            </Tooltip>
           </div>
         </div>
       ) : (

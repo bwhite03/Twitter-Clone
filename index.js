@@ -11,8 +11,8 @@ dotenv.config();
 
 // Middleware
 app.use(express.static("client/build"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(UserRoute);
 app.use(TweetRoute);
 app.use(MessageRoute);

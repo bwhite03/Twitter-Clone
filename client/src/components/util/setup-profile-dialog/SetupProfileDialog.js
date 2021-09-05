@@ -26,15 +26,21 @@ function SetupProfileDialog(props) {
 
   const submitComment = () => {
     props.updateProfile(data);
+    setProfileImg("");
+    setProfileBackground("");
+    setLocation("");
+    setBio("");
     setOpen(false);
   };
 
   const data = {
     userId: props.userInfo._id,
-    profileImg: profileImg,
-    profileBackground: profileBackground,
-    location: location,
-    bio: bio,
+    profileImg: profileImg ? profileImg : props.userInfo.profileImg,
+    profileBackground: profileBackground
+      ? profileBackground
+      : props.userInfo.profileBackground,
+    location: location ? location : props.userInfo.location,
+    bio: bio ? bio : props.userInfo.bio,
   };
 
   return (
@@ -56,7 +62,7 @@ function SetupProfileDialog(props) {
         <DialogTitle id="form-dialog-title">Set Up Profile</DialogTitle>
         <DialogContent>
           <TextField
-            style={{ width: "100%" }}
+            style={{ width: "100%", paddingTop: "10px" }}
             id="standard-multiline-flexible"
             label="Enter avatar url"
             multiline
@@ -90,7 +96,7 @@ function SetupProfileDialog(props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={submitComment}>Comment</Button>
+          <Button onClick={submitComment}>Update</Button>
         </DialogActions>
       </Dialog>
     </div>

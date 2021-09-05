@@ -39,11 +39,21 @@
     display: none;
   }
 
+  .MuiContainer-root {
+    padding: 0 !important;
+  }
+
   #homepage-container,
   #commentpage-container,
   #message-page-container,
   #notification-page-container,
   #profilepage-container {
     grid-template-columns: 1fr 10fr !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #nav-container {
+    padding: 0;
   }
 }
