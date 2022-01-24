@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { Container } from "@material-ui/core";
 import HomePage from "./pages/homepage/HomePage";
@@ -15,7 +15,7 @@ import "../src/sass/App.scss";
 
 function Router({ font, color }) {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Container maxWidth="lg" className={`${font} ${color}`}>
         <Switch>
           <Route
@@ -35,7 +35,7 @@ function Router({ font, color }) {
           <Route exact path="/comment/:id" component={CommentPage} />
         </Switch>
       </Container>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
