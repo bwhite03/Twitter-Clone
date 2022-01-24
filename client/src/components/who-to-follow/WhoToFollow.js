@@ -6,6 +6,7 @@ import UnfollowButton from "../util/unfollow-button/UnfollowButton";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import Divider from "@material-ui/core/Divider";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { connect } from "react-redux";
 import {
   updateFollowing,
@@ -46,12 +47,18 @@ function WhoToFollow(props) {
               </div>
             </div>
           </Link>
-          {props.userInfo.following.includes(props.follow._id) ? (
-            <UnfollowButton
-              handleDelete={props.updateUnfollowing.bind(null, id)}
-            />
+          {props.follow._id !== undefined ? (
+            props.userInfo.following.includes(props.follow._id) ? (
+              <UnfollowButton
+                handleDelete={props.updateUnfollowing.bind(null, id)}
+              />
+            ) : (
+              <FollowButton
+                handleUpdate={props.updateFollowing.bind(null, id)}
+              />
+            )
           ) : (
-            <FollowButton handleUpdate={props.updateFollowing.bind(null, id)} />
+            <CircularProgress />
           )}
         </ListItem>
         <Divider />
